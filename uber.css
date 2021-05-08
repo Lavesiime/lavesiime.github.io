@@ -1,0 +1,16 @@
+:root
+{
+	--BG1 : rgb(95 149 215);
+	--FG1 : rgb(45 77 110);
+
+	--FG2 : rgb(147 7 255);
+	--FG3 : rgb(198 7 255);
+
+	--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/799447605167259648/unknown.png") center / cover fixed no-repeat;
+	--BodyWrapperBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/799454414535524382/DumbThing.png");
+	
+	--Header : rgba(45, 77, 109, 247);
+	--DefaultTextColor : rgb(255 255 255);
+	--LinkColor : rgb(255 158 171);
+	--LinkHoverColor : #8f08e9;
+}
