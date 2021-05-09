@@ -14,8 +14,3 @@
 	--LinkColor : rgb(255 158 171);
 	--LinkHoverColor : #8f08e9;
 }
-
-module#IdentityModule
-{
-	--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/840744639043469332/unknown.png");
-}
