@@ -17,8 +17,5 @@
 
 module#IdentityModule
 {
-    max-width: 300px !important;
-    max-height: 300px !important;
-    min-width: 200px !important;
-    min-height: 200px !important;
+	--BodyWrapperBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/840744639043469332/unknown.png");
 }
