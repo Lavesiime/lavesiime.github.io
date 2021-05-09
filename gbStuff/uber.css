@@ -14,3 +14,11 @@
 	--LinkColor : rgb(255 158 171);
 	--LinkHoverColor : #8f08e9;
 }
+
+module#IdentityModule
+{
+    max-width: 300px !important;
+    max-height: 300px !important;
+    min-width: 200px !important;
+    min-height: 200px !important;
+}
