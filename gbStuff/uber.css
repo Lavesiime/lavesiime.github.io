@@ -15,10 +15,20 @@
 	--LinkHoverColor : #8f08e9;
 }
 
+.Avatar, .Avatar img{border-radius:50px;box-shadow: 0 0 0 0.125em rgba(0,0,0,0.75);}
 .Avatar.Offline{
-	opacity : 0.1;
+	opacity:0.5;
 }
-
 .Avatar.Online{
-	opacity : 0.1;
+	opacity:0.5;
+}
+.Avatar.IsRipeSupporter{
+	border-radius: 50px !important;
+}
+.Avatar.Online:after{display:none !important;}
+.Identity .Avatar, .Identity .Avatar img,
+#IdentityModule .Content a,
+#IdentityModule .Content a img{
+	border-radius:0px !important;
+	opacity:1 !important;
 }
