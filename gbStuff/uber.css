@@ -7,6 +7,7 @@
 	--FG3 : rgb(198 7 255);
 
 	--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/799447605167259648/unknown.png") center / cover fixed no-repeat;
+	--BodyWrapperBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/799454414535524382/DumbThing.png");
 	
 	--Header : rgba(45, 77, 109, 247);
 	--DefaultTextColor : rgb(255 255 255);
@@ -21,8 +22,8 @@
 url("https://cdn.discordapp.com/attachments/748697806453080157/841395908624252959/unknown.png") center*/
 
 .Avatar.Avatar img {
-	width: 200%;
-	height: 200%;
+	width: 100%;
+	height: 100%;
 	border-radius:60px;
 	box-shadow: 0 0 0 0.125em url("https://cdn.discordapp.com/attachments/748697806453080157/841395908624252959/unknown.png") center;
 }
