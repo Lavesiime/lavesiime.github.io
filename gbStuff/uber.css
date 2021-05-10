@@ -13,4 +13,6 @@
 	--DefaultTextColor : rgb(255 255 255);
 	--LinkColor : rgb(255 158 171);
 	--LinkHoverColor : #8f08e9;
+
+	cursor: wait !important;
 }
