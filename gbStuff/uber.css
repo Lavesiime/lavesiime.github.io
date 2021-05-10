@@ -31,14 +31,10 @@ url("https://cdn.discordapp.com/attachments/748697806453080157/84139590862425295
 .Avatar.Online{
 	opacity : 0.5;
 }
-.Identity .Avatar, .Identity .Avatar img, #IdentityModule .Content a, #IdentityModule .Content a img {
-	border-radius : 60px;
-	opacity : 0.1;
-}
 .Avatar.Online:after{display:none !important;}
 .Identity .Avatar, .Identity .Avatar img,
 #IdentityModule .Content a,
 #IdentityModule .Content a img{
-	border-radius:0px !important;
-	opacity:1 !important;
+	border-radius : 60px !important;
+	opacity : 0.1 !important;
 }
