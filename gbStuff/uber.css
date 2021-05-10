@@ -8,7 +8,7 @@
 
 	--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/799447605167259648/unknown.png") center / cover fixed no-repeat;
 	/*--BodyWrapperBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/799454414535524382/DumbThing.png");*/
-	--BodyWrapperBackground : rgba(0,12,225,0.66);
+	--BodyWrapperBackground : rgba(0,12,225,170);
 	
 	--Header : rgba(45, 77, 109, 247);
 	--DefaultTextColor : rgb(255 255 255);
