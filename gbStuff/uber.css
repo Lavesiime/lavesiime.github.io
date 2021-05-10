@@ -18,16 +18,14 @@
 	--PrimaryNavBackgroundColor: #009cff;
 }
 
-/*https://cdn.discordapp.com/attachments/748697806453080157/841395908624252959/unknown.png*/
+/*https://cdn.discordapp.com/attachments/748697806453080157/841395908624252959/unknown.png
+url("https://cdn.discordapp.com/attachments/748697806453080157/841395908624252959/unknown.png") center*/
 
-.Avatar, .Avatar img{border-radius:60px;box-shadow: 0 0 0 0.125em rgba(162,0,183,0.75);}
-.Avatar img {
-	width: 300%;
-	height: 300%;
-}
 .Avatar.Avatar img {
-	width: 300%;
-	height: 300%;
+	width: 200%;
+	height: 200%;
+	border-radius:60px;
+	box-shadow: 0 0 0 0.125em url("https://cdn.discordapp.com/attachments/748697806453080157/841395908624252959/unknown.png") center;
 }
 .Avatar.Offline{
 	opacity:0.5;
