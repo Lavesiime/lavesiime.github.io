@@ -13,12 +13,19 @@
 	--DefaultTextColor : rgb(255 255 255);
 	--LinkColor : rgb(255 158 171);
 	--LinkHoverColor : #8f08e9;
+	--NavUpdatesInd : #0083FF;
+	--SecondaryNavBackgroundColor: #009cff;
+	--PrimaryNavBackgroundColor: #009cff;
 }
 
 /*https://cdn.discordapp.com/attachments/748697806453080157/841395908624252959/unknown.png*/
 
 .Avatar, .Avatar img{border-radius:60px;box-shadow: 0 0 0 0.125em rgba(162,0,183,0.75);}
-Avatar img {
+.Avatar img {
+	width: 300%;
+	height: 300%;
+}
+.Avatar.Avatar img {
 	width: 300%;
 	height: 300%;
 }
@@ -30,9 +37,6 @@ Avatar img {
 }
 .Avatar.Upic{
 	opacity:0.5;
-}
-.Avatar.IsRipeSupporter{
-	border-radius: 50px !important;
 }
 .Avatar.Online:after{display:none !important;}
 .Identity .Avatar, .Identity .Avatar img,
