@@ -32,9 +32,9 @@ url("https://cdn.discordapp.com/attachments/748697806453080157/84139590862425295
 	opacity : 0.5;
 }
 .Avatar.Online:after{display:none !important;}
-.Identity .Avatar, .Identity .Avatar img,
 #IdentityModule .Content a,
 #IdentityModule .Content a img{
+	Background : white;
 	border-radius : 60px !important;
-	box-shadow : 0 0 0 0.125em rgba(162,0,183,0.75);
+	/*box-shadow : 0 0 0 0.125em rgba(162,0,183,0.75);*/
 }
