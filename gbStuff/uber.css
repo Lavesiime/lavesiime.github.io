@@ -31,8 +31,10 @@ url("https://cdn.discordapp.com/attachments/748697806453080157/84139590862425295
 	opacity : 0.5;
 }
 .Avatar.Online:after{display:none !important;}
+/*
 #IdentityModule .Content a img{
 	width : 200%;
 	height : 200%;
-	/*Background : white;*/
+	Background : white;
 }
+*/
