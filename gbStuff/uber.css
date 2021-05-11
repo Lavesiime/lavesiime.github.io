@@ -17,8 +17,6 @@
 	--SecondaryNavBackgroundColor: #009dffe1;
 	--PrimaryNavBackgroundColor: #009dffe1;
 }
-/*https://cdn.discordapp.com/attachments/748697806453080157/841395908624252959/unknown.png
-url("https://cdn.discordapp.com/attachments/748697806453080157/841395908624252959/unknown.png") center*/
 .Avatar.Avatar img {
 	width : 100%;
 	height : 100%;
@@ -28,7 +26,11 @@ url("https://cdn.discordapp.com/attachments/748697806453080157/84139590862425295
 	opacity : 0.5;
 }
 .Avatar.Online{
-	opacity : 0.5;
+	opacity : 1.0;
+}
+#BananaNavModule widget a:after
+{
+	content : url('https://cdn.discordapp.com/attachments/748697806453080157/841808886797565952/unPic.png');
 }
 /*
 .Avatar.Online:after{display:none !important;}
