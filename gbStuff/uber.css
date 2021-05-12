@@ -42,13 +42,17 @@
 	background: #1b4880;
 }
 body[data-_sHeaderStyle=Floating] #MainContentHeader.Fixed {
-    background: rgb(0 106 191);
+	background: rgb(0 106 191);
 }
-/*
-.Avatar.Online:after{display:none !important;}
-#IdentityModule .Content a img{
-	width : 200%;
-	height : 200%;
-	Background : white;
+input[type=text], input[type=password], input[type=password], input[type=number], input[type=email], input[type=num], input[type=tel], select, .SelectLike, option, .OptionLike, optgroup, textarea, .TextareaLike {
+	background: #0070C0;
 }
-*/
+spriteIcon.SubmissionType.Mod, .SpriteIcon.SubmissionType.Mod {
+	/*I prefer the look of the gamefile icon over the wrench thing, if this isn't allowed tell me and I'll remove it*/
+	content: url('https://cdn.discordapp.com/attachments/748697806453080157/841840065357021244/gear.png');
+	background-position: calc(-640px*2) calc(-48px*2);
+}
+spriteIcon.NavModuleIcon.SectionsNavModuleIcon, .SpriteIcon.NavModuleIcon.SectionsNavModuleIcon {
+	background-position: -800px -800px;
+	content: url(https://cdn.discordapp.com/attachments/748697806453080157/841841198738046986/pause.png);
+}
