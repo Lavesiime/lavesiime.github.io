@@ -49,6 +49,11 @@ spriteIcon.SubmissionType.Mod, .SpriteIcon.SubmissionType.Mod {
 	/*I prefer the look of the gamefile icon over the weird wrench thing, if this isn't allowed tell me and I'll remove it*/
 	background-position: calc(-224px*2) calc(-16px*2);
 }
+/*
+spriteIcon.SubmissionTypeSmall.Mod, .SpriteIcon.SubmissionTypeSmall.Mod {
+	background-position: -224px -16px;
+}
+*/
 spriteIcon.NavModuleIcon.SectionsNavModuleIcon, .SpriteIcon.NavModuleIcon.SectionsNavModuleIcon {
 	background-position: -800px -800px;
 	content: url(https://cdn.discordapp.com/attachments/748697806453080157/851614963532693504/pus.png);
