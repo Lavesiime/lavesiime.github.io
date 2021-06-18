@@ -6,7 +6,7 @@
 	--FG2 : rgb(147 7 255);
 	--FG3 : rgb(198 7 255);
 
-	--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/799447605167259648/unknown.png") center / cover fixed no-repeat;
+	/*--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/799447605167259648/unknown.png") center / cover fixed no-repeat;*/
 	--BodyWrapperBackground : rgba(44,76,109,0.83);
 	
 	--Header : rgba(45, 77, 109, 247);
@@ -19,7 +19,11 @@
 	--NavPaneBackgroundColor: #274b69;
 }
 .Avatar.Avatar img {
-	box-shadow : 0 0 0 0.125em rgb(162,0,183);
+	box-shadow : 0 0 0 0.125em testM;
+}
+@keyframes testM {
+	from {background-color: red;}
+	to {background-color: blue;}
 }
 .Avatar.Offline{
 	opacity : 0.5;
