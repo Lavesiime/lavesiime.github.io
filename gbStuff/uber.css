@@ -6,7 +6,7 @@
 	--FG2 : rgb(147 7 255);
 	--FG3 : rgb(198 7 255);
 
-	/*--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/799447605167259648/unknown.png") center / cover fixed no-repeat;*/
+	--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/799447605167259648/unknown.png") center / cover fixed no-repeat;
 	--BodyWrapperBackground : rgba(44,76,109,0.83);
 	
 	--Header : rgba(45, 77, 109, 247);
@@ -19,11 +19,7 @@
 	--NavPaneBackgroundColor: #274b69;
 }
 .Avatar.Avatar img {
-	box-shadow : 0 0 0 0.125em testM;
-}
-@keyframes testM {
-	from {background-color: red;}
-	to {background-color: blue;}
+	box-shadow : 0 0 0 0.125em rgb(162,0,183);
 }
 .Avatar.Offline{
 	opacity : 0.5;
@@ -36,7 +32,6 @@
 {
 	display : none;
 }
-
 #BananaNavModule widget a:after
 {
 	content : url('https://cdn.discordapp.com/attachments/748697806453080157/841808886797565952/unPic.png');
@@ -51,9 +46,8 @@ input[type=text], input[type=password], input[type=password], input[type=number]
 	background: #0070C0;
 }
 spriteIcon.SubmissionType.Mod, .SpriteIcon.SubmissionType.Mod {
-	/*I prefer the look of the gamefile icon over the wrench thing, if this isn't allowed tell me and I'll remove it*/
-	content: url('https://cdn.discordapp.com/attachments/748697806453080157/841840065357021244/gear.png');
-	background-position: calc(-640px*2) calc(-48px*2);
+	/*I prefer the look of the gamefile icon over the weird wrench thing, if this isn't allowed tell me and I'll remove it*/
+	background-position: calc(-224px*2) calc(-16px*2);
 }
 spriteIcon.NavModuleIcon.SectionsNavModuleIcon, .SpriteIcon.NavModuleIcon.SectionsNavModuleIcon {
 	background-position: -800px -800px;
