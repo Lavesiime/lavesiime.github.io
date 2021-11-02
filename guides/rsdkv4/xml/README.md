@@ -231,4 +231,4 @@ This (rather large) example will do a bunch of things. First, it will create the
 
 ## Conclusion
 
-Well, that should just about be everything. This new system allows easy-to-read XML files to be used instead of byte-based `GameConfig.bin`'s. As I've stated throughout this tutorial, all this _adds_ onto the things existing in the `GameConfig`, so a complete replacement can only happen if you dummy out the Game Config file.
+Well, that should just about be everything. This new system allows easy-to-read XML files to be used instead of byte-based `GameConfig.bin`'s, and that's pretty good, especially for modding. As I've stated throughout this tutorial, all this _adds_ onto the things existing in the `GameConfig`, so a complete replacement can only happen if you dummy out the Game Config file. Other than that, though, have fun!
