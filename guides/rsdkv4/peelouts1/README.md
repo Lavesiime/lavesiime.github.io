@@ -2,7 +2,7 @@
 ***
 # Adding the Super Peel Out to Sonic 1 (2013)
 
-This guide covers porting Sonic CD's Super Peel Out to Sonic 1 RSDK. This is going to be based of the decompiled scripts by Rubberduckycooly, which also means that the RSDKv4 decompilation is needed and this cannot be run on the original release. Without further ado, let's get started!
+This guide covers porting Sonic CD's Super Peel Out to Sonic 1 2013. This is going to be based off the decompiled scripts by Rubberduckycooly, which also means that the RSDKv4 decompilation is needed and this cannot be run on the original release. Without further ado, let's get started!
 
 ## What you'll need
 
@@ -12,15 +12,15 @@ This guide covers porting Sonic CD's Super Peel Out to Sonic 1 RSDK. This is goi
 * [Decompiled Sonic CD scripts](https://github.com/Rubberduckycooly/Sonic-CD-2011-Script-Decompilation)
 * Any text editor
 
-No sprite editor is needed to add the sprites for a reason coming up.
+No sprite editor is needed to add the sprites for reasons coming up.
 
 ## The Steps
 
 Alright, now here's the fun stuff!
 
-So, first we'll need to make a minor adjustment in order to have the Peel Out animation actually show up. If you're observant, you'll have noticed that there are already several mentions of the Peel Out animation in the scripts, as well as the sprites being present on Sonic's sheet. Because Sonic 1 was based on Sonic CD, the Peel Out animation is still fully functional if one single line is removed. Which line is that? Well, in the player object's startup, the Peel Out animation is replaced with the running animation via a `ANI_PEELOUT = ANI_RUNNING` line. If that is removed, the animation will show up when it should. This also means that we can now port the Peel Out and have it show up correctly.
+So, first we'll need to make a minor adjustment in order to have the Peel Out animation actually show up. If you're observant, you'll have noticed that there are already several mentions of the Peel Out animation in the scripts, as well as the sprites being present on Sonic's sheet. Because Sonic 1 was based on Sonic CD, the Peel Out animation is still fully functional, or at least it would be if it weren't for a single line. Which line is that? Well, in the player object's startup code, the Peel Out animation is replaced with the running animation via a `ANI_PEELOUT = ANI_RUNNING` line. If that is removed, the animation will show up when it should. This also means that we can now port the Peel Out and have it show up correctly.
 
-Now, how is the Peel Out triggered? Looking up and pressing jump, right? So, let's take a look at what CD does to trigger it. In the looking up state, we find this.
+Now, how is the Peel Out triggered? Looking up and pressing jump, right? So, let's take a look at what CD does to trigger it. In the looking up state, we find this:
 
 <details>
 <summary>Original CD Code</summary>
@@ -130,7 +130,7 @@ end function
 
 </details>
 
-Now that we've done that, we can safely call the function from within `PlayerObject_LookingUp` without any errors.
+Now that we've done that, we can safely call the function from within `PlayerObject_LookingUp` without any errors. This would look like...
 
 (Only a small snippit for the sake of redundancy)
 
@@ -178,7 +178,7 @@ endfunction
 
 </details>
 
-So, let's look at it part-by-part and port it to S1's language. First, the player state is set to `PlayerObject_HandlePeeloutS2`. Aside from changing the names, this piece of logic is fine. Then, `Player.AbilityTimer` is reset, it acts as the charge value so this is pretty important. Aside from variable names again, this can stay the same. Then, however, SFX `6` is played. This part _can_ technically stay the same, but it has the potential to break if more SFX are added. Because of this, we should use `SfxName` instead. Along with making the code more stable, it also makes the code more readable. The last instruction in the function is wrapped around a haptic preprocessor definition, so for our purposes, it's useless. You can keep it if you want, but know that it'll essentially do nothing.
+So, let's look at it part-by-part and port it to S1's language. First, the player state is set to `PlayerObject_HandlePeeloutS2`. Aside from changing the names, this piece of logic is fine. Then, `Player.AbilityTimer` is reset. f acts as the charge value so this is pretty important. Aside from variable names again, this can stay the same. Then, however, SFX `6` is played. This part _can_ technically stay the same, but it has the potential to break if more SFX are added. Because of this, we should use `SfxName` instead. Along with making the code more stable, it also makes the code more readable. The last instruction in the function is wrapped around a haptic preprocessor definition, so for our purposes, it's useless. You can keep it if you want, but know that it'll essentially do nothing.
 
 What we should end up with now is a complete `PlayerObject_StartPeelout` function. However, if you test it in-game, you'll find that it only locks the player, as the `PlayerObject_HandlePeelout` state is empty. Let's fix that!
 
@@ -284,17 +284,17 @@ function PlayerObject_HandlePeelout
 	if player.Gravity == true
 		player.State = PlayerObject_HandleAir
 		player.Speed = 0
-	endif
+	end if
 
 	if player.gravityValue == 4096
 		if player.abilityTimer < 393216
 			player.abilityTimer += 24576
-		endif
+		end if
 	else
 		if player.abilityTimer < 786432
 			player.abilityTimer += 24576
-		endif
-	endif
+		end if
+	end if
 
 	if player.abilityTimer < 390594
 		player.animation = ANI_WALKING
@@ -313,8 +313,8 @@ function PlayerObject_HandlePeelout
 			player.animation = ANI_PEELOUT
 		else
 			player.animation = ANI_RUNNING
-		endif
-	endif
+		end if
+	end if
 
 	if player.up == false
 		camera.lockTimer = 15
@@ -327,12 +327,12 @@ function PlayerObject_HandlePeelout
 			player.speed = player.abilityTimer
 			if player.direction == FACING_LEFT
 				FlipSign(player.speed)
-			endif
+			end if
 			PlaySfx(SfxName[Release], false)
-		endif
+		end if
 
 		CallFunction(PlayerObject_ResetOnFloor)
-	endif
+	end if
 
 	player.animationSpeed = temp0
 end function
@@ -340,7 +340,7 @@ end function
 
 </details>
 
-Well, that's all for this tutorial. Now that you've done all this, Sonic should be able to preform the Super Peel Out. This isn't limited to Sonic either, as now all characters can use it. Additionally, the Super Peel Out animation should be restored, with it appearing at the same speed thresholds it did in Sonic CD. 
+Well, that's all for this tutorial. Now that you've done this, Sonic should be able to preform the Super Peel Out by looking up and pressing jump. This isn't limited to Sonic either, as now all characters can use it. Additionally, the Super Peel Out animation should be restored, with it appearing at the same speed thresholds it did in Sonic CD. 
 
 Hope you have fun with your newfound power!
 
