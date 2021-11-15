@@ -190,7 +190,7 @@ So, let's look at it part-by-part and port it to S1's language. First, the playe
 What we should end up with now is a complete `PlayerObject_StartPeelout` function.
 
 <details>
-<summary>Our New Code</summary>
+<summary>Our New Code - Starting the Peel Out</summary>
 
 ```v
 function PlayerObject_StartPeelout
@@ -286,7 +286,7 @@ There's too much here to go through step-by-step, but it's not too hard to port 
 Now, after doing all that, we should now have the below
 
 <details>
-<summary>Our New Code</summary>
+<summary>Our New Code - Peel Out State</summary>
 
 ```v
 function PlayerObject_HandlePeelout
