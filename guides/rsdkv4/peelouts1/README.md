@@ -106,7 +106,7 @@ From this, it should be clear what to change; replace `CallFunction(PlayerObject
 First, let's declare the functions at the top of the script.
 
 <details>
-<summary>Our New Code</summary>
+<summary>Our New Code - Reserving Functions</summary>
 
 ```v
 reserve function PlayerObject_StartPeelout
@@ -118,7 +118,7 @@ reserve function PlayerObject_HandlePeelout
 Next, we should make the functions themselves. For right now, they can just be dummy functions, but we'll obviously have to fill them up later.
 
 <details>
-<summary>Our New Code</summary>
+<summary>Our New Code - Making The Functions</summary>
 
 ```v
 function PlayerObject_StartPeelout
@@ -135,28 +135,35 @@ Now that we've done that, we can safely call the function from within `PlayerObj
 (Only a small snippit for the sake of redundancy)
 
 <details>
-<summary>Our New Code</summary>
+<summary>Our New Code - Inserting the Peel Out Call</summary>
 
 ```v
-if player.gravity == GRAVITY_AIR
-	player.state = PlayerObject_HandleAir
-	player.timer = 0
-else
-	if player.jumpPress == true
-		CallFunction(PlayerObject_StartPeelout)
+function PlayerObject_LookingUp
+[...]
+	if player.gravity == GRAVITY_AIR
+		player.state = PlayerObject_HandleAir
+		player.timer = 0
+	else
+		if player.jumpPress == true
+			CallFunction(PlayerObject_StartPeelout)
+		end if
 	end if
-end if
 ```
 
 </details>
 
-Now that we've replaced the jump call with a call to start the Peel Out, if we test it out in-game, we'll see that Sonic can no longer jump while looking up. Now to add the actual Peel Out code!
+Now that we've replaced the jump call with a call to start the Peel Out, if we test it out in-game, we'll see that Sonic can no longer jump while looking up. However, he doesn't do anything because the functions are currently empty, so now to add the actual Peel Out code!
 
-Let's start with the Peel Out activating code first. In CD's scripts, you'll notice that there are two Peel Out variations; one `S2` one and one `CD` one. This may seem strange at first, and admittedly, it is, but the difference between the two is the camera. The `S2` variant has the camera follow the same format the S2 spindash does; lock for 15 frames after release, then return to normal. The `CD` variant, however, follows the same format as the CD spindash, where extended camera is used. For this tutorial, I'll demonstrate using the `S2` variant, but if you want to use the `CD` variant instead, you can. Just be aware that, in order to have a properly functioning extended camera, you'll also need to change other things, too.
+Let's start with the Peel Out activation code first. Before we begin, though, you may notice that in CD's scripts, there are two Peel Out variations; one `S2` one and one `CD` one. This may seem strange at first, and admittedly, it is, but the only difference between the two is the camera.
 
-Now that that's out of the way, let's add the actual Peel Out code! <!-- Wait- -->
+* The `S2` variant has the camera follow the same format the S2 spindash does; lock for 15 frames after release, then return to normal.
+* The `CD` variant follows the same format as the CD spindash, where the camera is panned to the side while charging, and then normal extended camera is used after.
 
-So, let's take a look at what's in CD's scripts. The function is nearly identical between the `CD` and `S2` versions, with the only difference being what the player state is set to. 
+For this tutorial, I'll demonstrate using the `S2` variant, as it feels more in line with the rest of S1's behaviours. If you want to use the `CD` variant instead, you can, but just be aware that you'll also need to change other things in the player object in order to have a properly functioning extended camera.
+
+Now that that's out of the way, let's actually add the Peel Out code! <!-- Wait- -->
+
+So, let's first take a look at what's in CD's scripts. Like I said before, I'll be basing this off the S2 version, but the function is nearly identical between the two, with the only difference being what the player state is set to. 
 
 Here's what the original CD function looks like
 
@@ -178,9 +185,9 @@ endfunction
 
 </details>
 
-So, let's look at it part-by-part and port it to S1's language. First, the player state is set to `PlayerObject_HandlePeeloutS2`. Aside from changing the names, this piece of logic is fine. Then, `Player.AbilityTimer` is reset. f acts as the charge value so this is pretty important. Aside from variable names again, this can stay the same. Then, however, SFX `6` is played. This part _can_ technically stay the same, but it has the potential to break if more SFX are added. Because of this, we should use `SfxName` instead. Along with making the code more stable, it also makes the code more readable. The last instruction in the function is wrapped around a haptic preprocessor definition, so for our purposes, it's useless. You can keep it if you want, but know that it'll essentially do nothing.
+So, let's look at it part-by-part and port it to S1's language. First, the player state is set to `PlayerObject_HandlePeeloutS2`. Aside from changing the names, this piece of logic is fine. Then, `Player.AbilityTimer` is reset. It acts as the charge value so this is pretty important. Aside from variable names again, this can stay the same. Then, however, SFX `6` is played. This part _can_ technically stay the same, but it has the potential to break if more SFX are added. Because of this, we should use `SfxName` instead. Along with making the code more stable, it also makes the code more readable. The last instruction in the function is wrapped around a haptic preprocessor definition, so for our purposes, it's useless. You can keep it if you want, but know that it'll essentially do nothing.
 
-What we should end up with now is a complete `PlayerObject_StartPeelout` function. However, if you test it in-game, you'll find that it only locks the player, as the `PlayerObject_HandlePeelout` state is empty. Let's fix that!
+What we should end up with now is a complete `PlayerObject_StartPeelout` function.
 
 <details>
 <summary>Our New Code</summary>
@@ -195,6 +202,8 @@ end function
 ```
 
 </details>
+	
+So, let's hop in-game and test it out! Wait... Sonic's just getting locked when he tries to use it? Well, that's because the `PlayerObject_HandlePeelout` state is empty, therefore making Sonic himself unable to do anything. Let's fix that!
 
 Like before, here's what the original CD code looks like
 
@@ -281,9 +290,9 @@ Now, after doing all that, we should now have the below
 
 ```v
 function PlayerObject_HandlePeelout
-	if player.Gravity == true
-		player.State = PlayerObject_HandleAir
-		player.Speed = 0
+	if player.gravity == true
+		player.state = PlayerObject_HandleAir
+		player.speed = 0
 	end if
 
 	if player.gravityValue == 4096
