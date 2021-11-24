@@ -23,7 +23,7 @@ So, first we'll need to make a minor adjustment in order to have the Peel Out an
 Now, how is the Peel Out triggered? Looking up and pressing jump, right? So, let's take a look at what CD does to trigger it. In the looking up state, we find this:
 
 <details>
-<summary>Original CD Code</summary>
+<summary>Original CD Code - Looking Up</summary>
 
 ```v
 function PlayerObject_LookingUp
@@ -58,7 +58,7 @@ endfunction
 From this, we can see that the Peel Out gets triggered simply if the player pressed the jump button while looking up. Now, if we look at the S1 code...
 
 <details>
-<summary>Original S1 Code</summary>
+<summary>Original S1 Code - Looking Up</summary>
 
 ```v
 function PlayerObject_LookingUp
@@ -168,7 +168,7 @@ So, let's first take a look at what's in CD's scripts. Like I said before, I'll 
 Here's what the original CD function looks like
 
 <details>
-<summary>Original CD Code</summary>
+<summary>Original CD Code - Starting the Peel Out</summary>
 
 ```v
 function PlayerObject_StartPeeloutS2
@@ -208,7 +208,7 @@ So, let's hop in-game and test it out! Wait... Sonic's just getting locked when 
 Like before, here's what the original CD code looks like
 
 <details>
-<summary>Original CD Code</summary>
+<summary>Original CD Code - Peel Out State</summary>
 
 ```v
 function PlayerObject_HandlePeeloutS2
