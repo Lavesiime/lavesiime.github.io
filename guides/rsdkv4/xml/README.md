@@ -67,7 +67,7 @@ The objects section of the XML file deals with adding global objects for the gam
 ```
 
 With this template, there are a few things you need to change
-- `[object name]` should be replaced with the object's name (for use with `TypeName[]`)
+- `[object name]` should be replaced with the object's name
 - `[script path]` should be replaced with the object's script path, based on `Scripts/`
 - `forceLoad` is set to either `true` or `false` depending on what you want
   - `false` appends it to the existing global object list, offseting all further object counts by 1
@@ -86,7 +86,7 @@ This would add two objects to the object list.
 
 ## Sound effects
 
-This section adds global SFX. Because they're global, they'll offset all SFX ID's by 1, but this can be avoided by using `TypeName[]`. By default, the decompiled scripts alreay use `TypeName[]` so this shouldn't be too much of an issue. The format used follows
+This section adds global SFX. Because they're global, they'll offset all stage SFX ID's by 1, but this can be avoided by using `SfxName[]`. By default, the decompiled scripts alreay use `SfxName[]` so this shouldn't be too much of an issue. The format used follows
 
 ```xml
 <sounds>
@@ -115,7 +115,7 @@ Adding players is probably the easist part of the XML process, as it only involv
 </players>
 ```
 
-Every entry in this `players` class adds one entry to the selectable players on the dev menu. Of course, it is up to the scripts to proper implement this. Without script modifications, these extra character slots <!-- shudders --> will only appear as Knuckles & Tails in-game. An example of it can be seen below
+Every entry in this `players` class adds one entry to the selectable players on the dev menu. Of course, it is up to the scripts to proper implement this. Without script modifications, these extra character slots <!-- *shudders* --> will only appear as Knuckles & Tails in-game. An example of it can be seen below
 
 <!-- I wanted to put Mario and Luigi or something like that but it was a bit too blunt so I went with this instead 
      I wonder who the Sulky equivalent is here -->
@@ -131,7 +131,7 @@ This would add players `NASH` and `RINGO` to the character selection screen, nor
 
 ## Stages
 
-The format for stages is perhaps the most complex out of the bunch, but not because it's difficult. Rather, it just needs the most values assigned to it in order to be setup properly. The format follows
+The format for stages is perhaps the most complex out of the bunch, but not because it's difficult. Rather, it just needs the most values assigned to it in order to be setup properly, so don't be intimidated. The format follows
 
 ```xml
 <[stagelist]>
@@ -145,11 +145,14 @@ The format for stages is perhaps the most complex out of the bunch, but not beca
   - `bonusStages`
   - `specialStages`
 - `[stage title]` is the stage's title to use on the dev menu
+  - The name drawn by the title card is independent from this, it's stored in the scene file itself instead
 - `[stage folder]` is the folder the stage is contained in
+  - Based on `Data/Stages/`
 - `[stage ID]` is the ID/Act of the stage
 - The entry gets highlighted if `highlight` is set to `true`
+  - Normally only set for entries with a name in their entry, if there's only the act number present on the row then this isn't needed
 
-An example would be the following.
+An example would be the following...
 
 ```xml
 <bonusStages>
@@ -157,14 +160,16 @@ An example would be the following.
 </bonusStages>
 ```
 
-This would add stage `LEVEL EDITOR` to the `bonusStages` list, using act `1` of the stage and highlighting it because `highlight` is set to true.
+This would first add stage `LEVEL EDITOR` to the `bonusStages` list. It'd use act `1` of the stage in the `LevED` folder, which means that it would be in `Data/Stages/LevED/Act1.bin`. It'd also get highlighted when selected because `highlight` is set to true.
 
 
 ## Big example
 
 Now, let's take everything we've learned and make one big game.xml file.
 
-<!-- Yeah I kinda just put gibberish in these examples, I wouldn't think of anything better so this'll have to do -->
+<!-- Yeah I kinda just put gibberish in these examples, I wouldn't think of anything better so this'll have to do 
+     Shoutouts if you can name what every refrence is 
+     Admittedly some like the vars are only a general refrence, but things like the palette are directly taken from other games-->
 
 ```xml
 <?xml version="1.0"?>
