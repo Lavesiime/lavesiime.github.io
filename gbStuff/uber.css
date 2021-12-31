@@ -1,17 +1,25 @@
 :root
 {
+	/*
+	   Three refrence vars, I believe they're unused
+	   Oh well
+	*/
+
 	--BG1 : rgb(95 149 215);
 	--FG1 : rgb(45 77 110);
 
 	--FG2 : rgb(147 7 255);
 	--FG3 : rgb(198 7 255);
 
+	/* BG, I went with a shot of AIZ's intro for this one 
+	   Not too satisfied with it, but it works */
 	--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/799447605167259648/unknown.png") center / cover fixed no-repeat;
 	--BodyWrapperBackground : rgba(44,76,109,0.83);
 	
 	--Header : rgba(45, 77, 109, 247);
 	--DefaultTextColor : rgb(255 255 255);
-	--LinkColor : rgb(255 158 171);
+	--SubNavigatorColor: rgba(45, 77, 109, 247);
+	--LinkColor : #CA9AE1;
 	--LinkHoverColor : #8f08e9;
 	--NavUpdatesInd : #0083FF;
 	--PrimaryNavBackgroundColor: #009dffe1;
@@ -48,6 +56,7 @@
 
 #SiteLogo img
 {
+	/* gb is gone :*/
 	display : none;
 }
 
@@ -56,6 +65,7 @@
 	content : url('https://cdn.discordapp.com/attachments/748697806453080157/841808886797565952/unPic.png');
 }
 
+/* Tiny thing, but I like it */
 ::-webkit-scrollbar-track {
 	background: #1b4880;
 }
@@ -64,6 +74,7 @@ body[data-_sHeaderStyle=Floating] #MainContentHeader.Fixed {
 	background: rgb(0 106 191);
 }
 
+/* Pretty much every input field + their selected variants */
 input[type=text], input[type=password], input[type=password], input[type=number], input[type=email], input[type=num], input[type=tel], select, .SelectLike, option, .OptionLike, optgroup, textarea, .TextareaLike {
 	background: #0070C0;
 }
@@ -74,6 +85,7 @@ spriteIcon.GamingDevicesIcon, .SpriteIcon.GamingDevicesIcon {
     height: 22px;
     content: url(https://cdn.discordapp.com/attachments/748697806453080157/926350549723525120/gameing.png);
 }
+*/
 
 /*
 spriteIcon.GamingDevicesIcon.Console, spriteIcon.GamingDevicesIcon.Handheld {
@@ -82,7 +94,7 @@ spriteIcon.GamingDevicesIcon.Console, spriteIcon.GamingDevicesIcon.Handheld {
 */
 
 spriteIcon.SubmissionType.Mod, .SpriteIcon.SubmissionType.Mod {
-	/*I prefer the look of the gamefile icon over the weird wrench thing, if this isn't allowed tell me and I'll remove it*/
+	/*I prefer the look of the gamefile icon over the weird wrench thing, if this isn't allowed or smth tell me and I'll remove it*/
 	background-position: calc(-224px*2) calc(-16px*2);
 }
 
@@ -94,5 +106,23 @@ spriteIcon.SubmissionTypeSmall.Mod, .SpriteIcon.SubmissionTypeSmall.Mod {
 
 spriteIcon.NavModuleIcon.SectionsNavModuleIcon, .SpriteIcon.NavModuleIcon.SectionsNavModuleIcon {
 	background-position: -800px -800px;
+	/* this isn't even correctly sized lol but i hope no one notices */
 	content: url(https://cdn.discordapp.com/attachments/748697806453080157/851614963532693504/pus.png);
+}
+
+/*
+I've always hated this annoying video, but it looks like it's mostly off-limits
+Oh well
+#main-video-container>video {
+    height: 50%;
+    width:  50%;
+}
+*/
+
+#SubNavigator {
+    display: flow-root;
+    font-size: var(--SubNavigatorFontSize);
+    border-bottom-width: .125em;
+    border-bottom-style: solid;
+    border-bottom-color: var(--SubNavigatorBorderColor);
 }
