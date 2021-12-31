@@ -17,43 +17,81 @@
 	--PrimaryNavBackgroundColor: #009dffe1;
 	--SecondaryNavBackgroundColor: #009dffe1;
 	--NavPaneBackgroundColor: #274b69;
+	--NotificationUnseenBG: #274b69;
 }
+
+.Notification.Unseen {
+	background: var(--NotificationUnseenBG);
+	border-top-color: var(--NotificationUnseenDividerColor);
+}
+
+.Notification {
+	list-style-type: none;
+	padding: .75em;
+}
+
 .Avatar.Avatar img {
+	/* The path to becoming a 	*/
 	box-shadow : 0 0 0 0.125em rgb(162,0,183);
 }
+
 .Avatar.Offline{
+	/* Fancy neat effect lol
+	   Turns the avatar slightly transparent when the user is offline */
 	opacity : 0.5;
 }
+
 .Avatar.Online{
 	opacity : 1.0;
 	box-shadow : 0 0 0 0.14em rgb(162,0,183);
 }
-#GbLogo
+
+#SiteLogo img
 {
 	display : none;
 }
-#BananaNavModule widget a:after
+
+#SiteLogo:after
 {
 	content : url('https://cdn.discordapp.com/attachments/748697806453080157/841808886797565952/unPic.png');
 }
+
 ::-webkit-scrollbar-track {
 	background: #1b4880;
 }
+
 body[data-_sHeaderStyle=Floating] #MainContentHeader.Fixed {
 	background: rgb(0 106 191);
 }
+
 input[type=text], input[type=password], input[type=password], input[type=number], input[type=email], input[type=num], input[type=tel], select, .SelectLike, option, .OptionLike, optgroup, textarea, .TextareaLike {
 	background: #0070C0;
 }
+
+/*
+spriteIcon.GamingDevicesIcon, .SpriteIcon.GamingDevicesIcon {
+    width: 31px;
+    height: 22px;
+    content: url(https://cdn.discordapp.com/attachments/748697806453080157/926350549723525120/gameing.png);
+}
+
+/*
+spriteIcon.GamingDevicesIcon.Console, spriteIcon.GamingDevicesIcon.Handheld {
+	content: url('https://cdn.discordapp.com/attachments/748697806453080157/926347813057597491/gameing.png');
+}
+*/
+
 spriteIcon.SubmissionType.Mod, .SpriteIcon.SubmissionType.Mod {
 	/*I prefer the look of the gamefile icon over the weird wrench thing, if this isn't allowed tell me and I'll remove it*/
 	background-position: calc(-224px*2) calc(-16px*2);
 }
+
 /*
 spriteIcon.SubmissionTypeSmall.Mod, .SpriteIcon.SubmissionTypeSmall.Mod {
 	background-position: -224px -16px;
 }
 */
+
 spriteIcon.NavModuleIcon.SectionsNavModuleIcon, .SpriteIcon.NavModuleIcon.SectionsNavModuleIcon {
 	background-position: -800px -800px;
 	content: url(https://cdn.discordapp.com/attachments/748697806453080157/851614963532693504/pus.png);
