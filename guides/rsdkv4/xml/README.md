@@ -174,65 +174,93 @@ Now, let's take everything we've learned and make one big game.xml file.
 ```xml
 <?xml version="1.0"?>
 <game>
-    <variables>
-        <variable name="ANI_STAND_N" value="0"> </variable>
-        <variable name="ANI_STAND_T" value="1"> </variable>
-        <variable name="ANI_THINK_N" value="2"> </variable>
-        <variable name="ANI_THINK_T" value="3"> </variable>
-    </variables>
+	<palette>
+		<color bank="0" index="0" r="255" g="0" b="255"> </color>
+		<color bank="0" index="1" r="0" g="0" b="0"> </color>
+		<color bank="0" index="2" r="32" g="32" b="128"> </color>
+		<color bank="0" index="3" r="64" g="64" b="160"> </color>
+		<color bank="0" index="4" r="96" g="96" b="192"> </color>
+		<color bank="0" index="5" r="128" g="128" b="224"> </color>
+		<color bank="0" index="6" r="224" g="224" b="224"> </color>
+		<color bank="0" index="7" r="160" g="160" b="160"> </color>
+		<color bank="0" index="8" r="128" g="128" b="128"> </color>
+		<color bank="0" index="9" r="64" g="64" b="64"> </color>
+		<color bank="0" index="10" r="224" g="160" b="128"> </color>
+		<color bank="0" index="11" r="160" g="96" b="64"> </color>
+		<color bank="0" index="12" r="224" g="0" b="0"> </color>
+		<color bank="0" index="13" r="128" g="0" b="0"> </color>
+		<color bank="0" index="14" r="64" g="0" b="0"> </color>
+		<color bank="0" index="15" r="224" g="224" b="0"> </color>
+	</palette>
 
-    <palette>
-        <color bank="0" index="0" r="0" g="115" b="123"> </color>
-        <color bank="0" index="1" r="41" g="33" b="0"> </color>
-        <color bank="0" index="2" r="74" g="57" b="16"> </color>
-        <color bank="0" index="3" r="99" g="74" b="16"> </color>
-        <color bank="0" index="4" r="123" g="90" b="16"> </color>
-        <color bank="0" index="5" r="156" g="123" b="16"> </color>
-        <color bank="0" index="6" r="198" g="156" b="16"> </color>
-        <color bank="0" index="7" r="231" g="189" b="24"> </color>
-        <color bank="0" index="8" r="247" g="231" b="165"> </color>
-        <color bank="0" index="9" r="123" g="107" b="82"> </color>
-        <color bank="0" index="10" r="156" g="140" b="115"> </color>
-        <color bank="0" index="11" r="181" g="173" b="156"> </color>
-        <color bank="0" index="12" r="206" g="198" b="181"> </color>
-        <color bank="0" index="13" r="231" g="222" b="206"> </color>
-        <color bank="0" index="14" r="247" g="247" b="239"> </color>
-        <color bank="0" index="15" r="132" g="66" b="24"> </color>
-    </palette>
+	<objects>
+		<object name="Player Object" script="Players/PlayerObject.txt" forceLoad="false"> </object>
+		<object name="Partner Object" script="Players/PartnerObject.txt" forceLoad="false"> </object>
+		<object name="HUD" script="Global/HUD.txt" forceLoad="false"> </object>
+		<object name="Chippit" script="Global/Chippit.txt" forceLoad="false"> </object>
+		<object name="Dust Puff" script="Global/DustPuff.txt" forceLoad="false"> </object>
+	</objects>
 
-    <objects>
-        <object name="Character 1" script="Global/Char1.txt" forceLoad="false"> </object>
-        <object name="Character 2" script="Global/Char2.txt" forceLoad="false"> </object>
-        <object name="Character 3" script="Global/Char3.txt" forceLoad="false"> </object>
-        <object name="Camera Control" script="Global/CControl.txt" forceLoad="false"> </object>
-    </objects>
+	<variables>
+		<variable name="options.gameMode" value="0"> </variable>
+		<variable name="options.hardMode" value="0"> </variable>
+		<variable name="oscillation" value="0"> </variable>
+		<variable name="player.score" value="100"> </variable>
+		<variable name="player.lives" value="3"> </variable>
+	</variables>
 
-    <sounds>
-        <soundfx name="Turtle" path="Global/TurtleCol.wav"> </soundfx>
-        <soundfx name="Matte" path="Global/Fold.wav"> </soundfx>
-        <soundfx name="Cure" path="Global/Got.wav"> </soundfx>
-        <soundfx name="Car" path="Global/Hang.wav"> </soundfx>
-    </sounds>
+	<sounds>
+		<soundfx name="Jump" path="Global/Jump.wav"> </soundfx>
+		<soundfx name="Slide" path="Global/Slide.wav"> </soundfx>
+		<soundfx name="Collect" path="Global/Collect.wav"> </soundfx>
+	</sounds>
 
-    <players>
-        <player name="VIS"> </player>
-        <player name="KEI"> </player>
-    </players>
+	<players>
+		<player name="SCOUT"> </player>
+	</players>
 
-    <presentationStages>
-        <stage name="TITLE SCREEN" folder="title" id="1" highlight="true"> </stage>
-    </presentationStages>
+	<presentationStages>
+		<stage name="TITLE SCREEN" folder="Title" id="1" highlight="true"> </stage>
+		<stage name="CREDITS" folder="Credits" id="1" highlight="true"> </stage>
+	</presentationStages>
 
-    <regularStages>
-        <stage name="LAKE ZONE 1" folder="Lake" id="1" highlight="true"> </stage>
-        <stage name="2" folder="Lake" id="2" highlight="false"> </stage>
-        <stage name="LOBBY ZONE" folder="THLBYNo2" id="2" highlight="true"> </stage>
-    </regularStages>
+	<regularStages>
+		<stage name="GREEN PLAINS 1" folder="Level-01" id="1" highlight="true"> </stage>
+		<stage name="2" folder="Level-01" id="2" highlight="false"> </stage>
+		<stage name="3" folder="Level-01" id="3" highlight="false"> </stage>
+	</regularStages>
+
+	<specialStages>
+		<stage name="SPECIAL STAGE" folder="SpecialS" id="1" highlight="true"> </stage>
+		<stage name="2" folder="SpecialS" id="2" highlight="false"> </stage>
+	</specialStages>
+
+	<bonusStages>
+		<stage name="BONUS GAME 1" folder="BonusS" id="1" highlight="true"> </stage>
+		<stage name="2" folder="BonusS" id="2" highlight="false"> </stage>
+	</bonusStages>
 </game>
 ```
 
-This (rather large) example will do a bunch of things. First, it will create the global variables `ANI_STAND_N`, `ANI_STAND_T`, `ANI_THINK_N`, and `ANI_THINK_T`. They will have default values going from `0` to `3`, in the order they appear in. Then, the global palette will be set to the colors set in the XML. Not much else that I can say here, so let's move on. Next, 4 global objects will be made; `Character 1`, `Character 2`, `Character 3`, and `Camera Control`. Their script paths will be `Global/Char1.txt`, `Global/Char2.txt`, `Global/Char3.txt`, and `Global/CControl.txt`. They will all be added to the global objects list, rather than the end of the stage objects list. After that, 4 global SFX will be made: `Turtle`, `Matte`, `Cure`, and `Car`. Their paths will be `Global/TurtleCol.wav`, `Global/Fold.wav`, `Global/Got.wav`, and `Global/Hang.wav`, respectively. Next, 2 players will be added to the list, those being `VIS` and `KEI`. Finally, stages get added to the list. The first one is `TITLE SCREEN` on the `presentationStages` list, with it using act `1` of folder `title`, and being able to get highlighted on the dev menu. Next, `regularStages` are added. In order, `LAKE ZONE 1`, `(LAKE ZONE) 2`, and `LOBBY ZONE` are added. The former two pull from folder `Lake` while the last one pulls from THLBYNo2. The acts they use are `1`, `2`, and `2`, in that order. Only `LAKE ZONE 2` doesn't get highlighted on the menu, because it doesn't have anything to highlight. All other entries get highlighted.
+This (rather large) example will do a bunch of things.
 
+- First, it'll set the global palette to have the colours seen below
+
+<img src="paletteExample2.png" style="height: 8;" />
+
+- Then, it'll add objects to the global item list, `Player Object`, `Partner Object`, `HUD`, `Chippit`, and `Dust Puff`. The scripts they all have will, in order, be `Players/PlayerObject.txt`, `Players/PartnerObject.txt`, `Global/HUD.txt`, `Global/Chippit.txt`, and `Global/DustPuff.txt`.
+
+- After that, a few global variables will be created, namely `options.gameMode`, `options.hardMode`, `oscillation`, `player.score`, and `player.lives`. `player.score` will have a default of `100`, and `player.lives` will have a default of `3`.
+
+- Next, some sounds will be added to the global sounds list. `Jump` with a path of `Global/Jump.wav`, `Slide` with a path of `Global/Slide.wav`, and `Collect` with a path of `Global/Collect.wav`.
+
+- From there, a player entry of `SCOUT` will be added to the player list. Not much else to be said here, so let's move on!
+
+- Now, all the stages are added.
+  - Presentation Stages get `TITLE SCREEN` and `CREDITS`
+  - Regular Stages get `GREEN PLAINS 1-3`
+  - Special Stages get `SPECIAL STAGE`
+  - Bonus Stages get `BONUS GAME 1-2`
 
 ## Conclusion
 
