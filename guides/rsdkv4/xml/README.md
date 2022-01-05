@@ -9,27 +9,6 @@ This is a small guide on how to use the XML modding API in the Retro Engine V4 d
 The basic formatting of an XML file starts with the XML version at the top. For this tutorial, all that's needed is `<?xml version="1.0"?>`. Then, the first "class" starts. For RSDK, the only class used is `game`. In this `game` class, all the other sub-classes are contained inside of it. These sub-classes are what actually do stuff, so let's talk about them, starting with...
 
 
-## Global Variables
-
-Global variables are variables that are, well, global and can be changed by any script. Unlike object values or static values, these are kept the same between scene reloads. They are inserted into the `<variables>` class. The format they follow is
-
-```xml
-<variables>
-    <variable name="[variable name]" value="[default value]"> </variable>
-    [...]
-</variables>
-```
-
-Of course, `[variable name]` is replaced with your actual variable name, and `[default value]` is replaced with what you want the default value to be. More variable entries can be entered until a satisfactory amount is reached. An example would be...
-
-```xml
-    <variable name="options.remixedMusic" value="1"> </variable>
-    <variable name="options.customPalettes" value="1"> </variable>
-```
-
-In this example, two global variables are created; `options.remixedMusic` and `options.customPalettes`, both with default values of `1`. Now, these variables can be accessed from scripts just like any other global variable.
-
-
 ## Palettes
 
 Although it may be a bit tedious, the XML support also allows for changing the global palette. I say that because, instead of having you input an already packed color for each index, you have to provide the R, G, and B values separately. However, it isn't my place to complain about it, so let's get on to the useful info. The format allows all 256 colors across the 8 palettes to be replaced, the format it follows is
@@ -71,7 +50,9 @@ With this template, there are a few things you need to change
 - `[script path]` should be replaced with the object's script path, based on `Scripts/`
 - `forceLoad` is set to either `true` or `false` depending on what you want
   - `false` appends it to the existing global object list, offseting all further object counts by 1
+    - If you're making an original game, this is what you'll want
   - `true` will place it at the end of the stage object list, leaving all existing object types intact
+    - If you're making a mod for an existing game, this is what you'll want
 
 For example...
 
@@ -83,6 +64,28 @@ For example...
 This would add two objects to the object list.
 1. `Coin` would get added to the _global_ object list, with it offsetting all stage objects by 1. Its script path would be `Scripts/Global/Coin.txt`
 2. `Shoe` would get added to the end of the _stage_ object list, leaving all preceeding objects alone. Its script path would be `Scripts/Global/Shoe.txt`
+
+
+## Global Variables
+
+Global variables are variables that are, well, global and can be changed by any script. Unlike object values or static values, these are kept the same between scene reloads. They are inserted into the `<variables>` class. The format they follow is
+
+```xml
+<variables>
+    <variable name="[variable name]" value="[default value]"> </variable>
+    [...]
+</variables>
+```
+
+Of course, `[variable name]` is replaced with your actual variable name, and `[default value]` is replaced with what you want the default value to be. More variable entries can be entered until a satisfactory amount is reached. An example would be...
+
+```xml
+    <variable name="options.remixedMusic" value="1"> </variable>
+    <variable name="options.customPalettes" value="1"> </variable>
+```
+
+In this example, two global variables are created; `options.remixedMusic` and `options.customPalettes`, both with default values of `1`. Now, these variables can be accessed from scripts just like any other global variable.
+
 
 ## Sound effects
 
@@ -106,7 +109,7 @@ This would add SFX `Shoot` and `Charged Shot` to the global SFX list, with paths
 
 ## Players
 
-Adding players is probably the easist part of the XML process, as it only involves
+Adding players is the simplest part of the XML process, as it only involves
 
 ```xml
 <players>
@@ -115,7 +118,7 @@ Adding players is probably the easist part of the XML process, as it only involv
 </players>
 ```
 
-Every entry in this `players` class adds one entry to the selectable players on the dev menu. Of course, it is up to the scripts to proper implement this. Without script modifications, these extra character slots <!-- *shudders* --> will only appear as Knuckles & Tails in-game. An example of it can be seen below
+Every entry in this `players` class adds one entry to the selectable players on the dev menu. Of course, it is up to the scripts to proper implement this. Note that without extra script modifications, these extra character slots <!-- *shudders* --> will have no effect in-game. An example of it can be seen below
 
 <!-- I wanted to put Mario and Luigi or something like that but it was a bit too blunt so I went with this instead 
      I wonder who the Sulky equivalent is here -->
