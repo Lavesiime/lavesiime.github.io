@@ -129,17 +129,9 @@ Oh well
 }
 
 
-@media (max-width : 1000px)
+#SiteLogo:after
 {
-	#SiteLogo .SacredBanana
-	{
-		display : none;
-	}
-
-	#SiteLogo:after
-	{
-		content : url('https://cdn.discordapp.com/attachments/748697806453080157/841808886797565952/unPic.png');
-	}
+	content : url('https://cdn.discordapp.com/attachments/748697806453080157/841808886797565952/unPic.png');
 }
 
 [data-_ssecondarynavposition="Left"] #MainContentHeader.Fixed #SubNavigator .DropdownMenuSubNavigator > li:first-of-type {
