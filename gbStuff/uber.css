@@ -4,7 +4,6 @@
 	   Three refrence vars, I believe they're unused
 	   Oh well
 	*/
-
 	--BG1 : rgb(95 149 215);
 	--FG1 : rgb(45 77 110);
 
@@ -13,7 +12,7 @@
 
 	/* BG, I went with a shot of AIZ's intro for this one 
 	   Not too satisfied with it, but it works */
-	--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/799447605167259648/unknown.png") center / cover fixed no-repeat;
+	--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/930154478437560340/unknown.png");
 	--BodyWrapperBackground : rgba(44,76,109,0.83);
 	
 	--Header : rgba(45, 77, 109, 247);
@@ -58,11 +57,6 @@
 {
 	/* gb is gone :*/
 	display : none;
-}
-
-#SiteLogo:after
-{
-	content : url('https://cdn.discordapp.com/attachments/748697806453080157/841808886797565952/unPic.png');
 }
 
 /* Tiny thing, but I like it */
@@ -120,9 +114,23 @@ Oh well
 */
 
 #SubNavigator {
-    display: flow-root;
-    font-size: var(--SubNavigatorFontSize);
-    border-bottom-width: .125em;
-    border-bottom-style: solid;
-    border-bottom-color: var(--SubNavigatorBorderColor);
+	display: flow-root;
+	font-size: var(--SubNavigatorFontSize);
+	border-bottom-width: .125em;
+	border-bottom-style: solid;
+	border-bottom-color: var(--SubNavigatorBorderColor);
+}
+
+
+@media (max-width : 1000px)
+{
+	#SiteLogo .SacredBanana
+	{
+		display : none;
+	}
+
+	#SiteLogo:after
+	{
+		content : url('https://cdn.discordapp.com/attachments/748697806453080157/841808886797565952/unPic.png');
+	}
 }
