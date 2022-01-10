@@ -12,7 +12,8 @@
 
 	/* BG, I went with a shot of AIZ's intro for this one 
 	   Not too satisfied with it, but it works */
-	--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/930154478437560340/unknown.png");
+	--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/930157539155378176/unknown.png");
+	--Bodybackground-repeat: repeat; backdrop-filter: blur(15px);
 	--BodyWrapperBackground : rgba(44,76,109,0.83);
 	
 	--Header : rgba(45, 77, 109, 247);
