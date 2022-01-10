@@ -12,21 +12,22 @@
 
 	/* BG, I went with a shot of AIZ's intro for this one 
 	   Not too satisfied with it, but it works */
-	--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/930157539155378176/unknown.png");
+	--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/930160777736904754/unknown.png");
 	--Bodybackground-repeat: repeat; backdrop-filter: blur(15px);
 	--BodyWrapperBackground : rgba(44,76,109,0.83);
 	
-	--Header : rgba(45, 77, 109, 247);
+	--Header : rgba(45, 77, 98, 247);
 	--DefaultTextColor : rgb(255 255 255);
 	--SubNavigatorColor: rgba(45, 77, 109, 247);
 	--LinkColor : rgb(255 158 171);
 	--LinkHoverColor : #8f08e9;
-	--NavUpdatesInd : #0083FF;
+	--NavUpdatesInd : #0083ef;
 	--PrimaryNavBackgroundColor: #009dffe1;
 	--SecondaryNavBackgroundColor: #009dffe1;
 	--NavPaneBackgroundColor: #274b69;
 	--NotificationUnseenBG: #274b69;
 }
+
 
 .Notification.Unseen {
 	background: var(--NotificationUnseenBG);
@@ -135,3 +136,13 @@ Oh well
 		content : url('https://cdn.discordapp.com/attachments/748697806453080157/841808886797565952/unPic.png');
 	}
 }
+
+[data-_ssecondarynavposition="Left"] #MainContentHeader.Fixed #SubNavigator .DropdownMenuSubNavigator > li:first-of-type {
+	padding-left: 1em;
+	border-radius: 0 0 0 1em;
+}
+  [data-_ssecondarynavposition="Right"] #MainContentHeader.Fixed #SubNavigator .DropdownMenuSubNavigator > li:last-of-type {
+	padding-right: 1em;
+	border-radius: 0 0 1em 0;
+}
+
