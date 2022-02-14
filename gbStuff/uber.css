@@ -143,12 +143,14 @@ Oh well
 	border-radius: 0 0 1em 0;
 }
 
+/*
 nav#SecondaryNav wrapper module.HasIndicator icon spriteicon,
 nav#SecondaryNav wrapper module.HasUpdates icon spriteicon,
 nav#SecondaryNav wrapper module.HasIndicator icon img,
 nav#SecondaryNav wrapper module.HasUpdates icon img{
         animation:idk-19216945 5s ease-in-out infinite;
 }
+*/
 
 
 @keyframes idk-19216945{
