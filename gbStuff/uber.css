@@ -14,11 +14,14 @@
 	   Not too satisfied with it, but it works */
 	--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/930160777736904754/unknown.png");
 	--Bodybackground-repeat: repeat; 
+
+	/* Kinda gave up here lol it doesn't even work */
 	backdrop-filter: blur(15px);
 	--backdrop-filter: blur(15px);
 	--Bodybackground-filter: blur(15px);
 	--filter: blur(15px);
 	--webkit-filter: blur(15px);
+
 	--BodyWrapperBackground : rgba(44,76,109,0.83);
 	
 	--Header : rgba(45, 77, 98, 247);
@@ -141,34 +144,4 @@ Oh well
   [data-_ssecondarynavposition="Right"] #MainContentHeader.Fixed #SubNavigator .DropdownMenuSubNavigator > li:last-of-type {
 	padding-right: 1em;
 	border-radius: 0 0 1em 0;
-}
-
-/*
-nav#SecondaryNav wrapper module.HasIndicator icon spriteicon,
-nav#SecondaryNav wrapper module.HasUpdates icon spriteicon,
-nav#SecondaryNav wrapper module.HasIndicator icon img,
-nav#SecondaryNav wrapper module.HasUpdates icon img{
-        animation:idk-19216945 5s ease-in-out infinite;
-}
-*/
-
-
-@keyframes idk-19216945{
-	0%{transform:translate(3px);}
-	3%{transform:translate(6px);}
-	6%{transform:translate(9px);}
-	9%{transform:translate(12px);}
-	12%{transform:translate(15px);}
-	15%{transform:translate(18px);}
-	17%{transform:translate(21px);}
-	20%{transform:translate(24px);}
-	23%{transform:translate(27px);}
-	26%{transform:translate(30px);}
-	29%{transform:translate(33px);}
-	32%{transform:translate(36px);}
-	35%{transform:translate(39px);}
-	38%{transform:translate(42px);}
-	41%{transform:translate(45px);}
-	44%{transform:translate(48px);}
-	100%{transform:translate(51px);}
 }
