@@ -1,8 +1,8 @@
 # lavesiime.github.io
 ***
-# RSDK V4 XML Guide
+# RSDK XML Guide
 
-This is a small guide on how to use the XML modding API in the Retro Engine V4 decomp. Not much else to say, so let's get started!
+This is a small guide on how to use the XML modding API in the Retro Engine V3/V4 decompilations. Not much else to say, so let's get started!
 
 ## Basic Formatting
 
@@ -57,8 +57,10 @@ With this template, there are a few things you need to change
 For example...
 
 ```xml
+<objects>
     <object name="Coin" script="Global/Coin.txt" forceLoad="false"> </object>
     <object name="Shoe" script="Global/Shoe.txt" forceLoad="true"> </object>
+</objects>
 ```
 
 This would add two objects to the object list.
@@ -80,8 +82,10 @@ Global variables are variables that are, well, global and can be changed by any 
 Of course, `[variable name]` is replaced with your actual variable name, and `[default value]` is replaced with what you want the default value to be. More variable entries can be entered until a satisfactory amount is reached. An example would be...
 
 ```xml
+<variables>
     <variable name="options.remixedMusic" value="1"> </variable>
     <variable name="options.customPalettes" value="1"> </variable>
+</variables>
 ```
 
 In this example, two global variables are created; `options.remixedMusic` and `options.customPalettes`, both with default values of `1`. Now, these variables can be accessed from scripts just like any other global variable.
@@ -89,7 +93,18 @@ In this example, two global variables are created; `options.remixedMusic` and `o
 
 ## Sound effects
 
-This section adds global SFX. Because they're global, they'll offset all stage SFX ID's by 1, but this can be avoided by using `SfxName[]`. By default, the decompiled scripts alreay use `SfxName[]` so this shouldn't be too much of an issue. The format used follows
+This section talks about adding global SFX. The format differs between the RSDKv3 (Sonic CD) decompilation and the RSDKv4 (Sonic 1/2) decompilation.
+
+For RSDKv3 (Sonic CD), the format used follows the below, where `sfx path` is the path to your SFX file, relative to `Data/SoundFX/`.
+
+```xml
+<sounds>
+    <soundfx path="[sfx path]"> </soundfx>
+    [...]
+</sounds>
+```
+
+For RSDKv4 (Sonic 1/2), the format adds the `name` parameter, to allow for `SfxName` uses in the scripts. Other than that, the format is the same as RSDKv3.
 
 ```xml
 <sounds>
@@ -98,11 +113,13 @@ This section adds global SFX. Because they're global, they'll offset all stage S
 </sounds>
 ```
 
-An example of this is...
+An example of an RSDKv4 one would be like...
 
 ```xml
+<sounds>
     <soundfx name="Shoot" path="Global/Shoot.wav"> </soundfx>
     <soundfx name="Charged Shot" path="Global/ChargedShot.wav"> </soundfx>
+</sounds>
 ```
 
 This would add SFX `Shoot` and `Charged Shot` to the global SFX list, with paths of `Data/SoundFX/Global/Shoot.wav` and `Data/SoundFX/Global/ChargedShot.wav`, respectively.
@@ -119,9 +136,6 @@ Adding players is the simplest part of the XML process, as it only involves
 ```
 
 Every entry in this `players` class adds one entry to the selectable players on the dev menu. Of course, it is up to the scripts to proper implement this. Note that without extra script modifications, these extra character slots <!-- *shudders* --> will have no effect in-game. An example of it can be seen below
-
-<!-- I wanted to put Mario and Luigi or something like that but it was a bit too blunt so I went with this instead 
-     I wonder who the Sulky equivalent is here -->
 
 ```xml
 <players>
@@ -169,10 +183,6 @@ This would first add stage `LEVEL EDITOR` to the `bonusStages` list. It'd use ac
 ## Big example
 
 Now, let's take everything we've learned and make one big game.xml file.
-
-<!-- Yeah I kinda just put gibberish in these examples, I wouldn't think of anything better so this'll have to do 
-     Shoutouts if you can name what every refrence is 
-     Admittedly some like the vars are only a general refrence, but things like the palette are directly taken from other games-->
 
 ```xml
 <?xml version="1.0"?>
