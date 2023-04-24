@@ -1,39 +1,52 @@
 :root
 {
-	/*
-	   Three refrence vars, I believe they're unused
-	   Oh well
-	*/
-	--BG1 : rgb(95 149 215);
-	--FG1 : rgb(45 77 110);
-
-	--FG2 : rgb(147 7 255);
-	--FG3 : rgb(198 7 255);
-
-	/* BG, I went with a shot of AIZ's intro for this one 
-	   Not too satisfied with it, but it works */
-	--BodyBackground : url("https://cdn.discordapp.com/attachments/748697806453080157/930160777736904754/unknown.png");
+	/* Snipped from the official Splatoon site, hope Nintendo doesn't mind
+	   - original link - https://splatoon.nintendo.com/_images/backgrounds/tapes-black.jpg */
+	--BodyBackground : url(https://cdn.discordapp.com/attachments/748697806453080157/1095526141063860224/tapes-black.png);
 	--Bodybackground-repeat: repeat; 
-
-	/* Kinda gave up here lol it doesn't even work */
-	backdrop-filter: blur(15px);
-	--backdrop-filter: blur(15px);
-	--Bodybackground-filter: blur(15px);
-	--filter: blur(15px);
-	--webkit-filter: blur(15px);
-
-	--BodyWrapperBackground : rgba(44,76,109,0.83);
 	
-	--Header : rgba(45, 77, 98, 247);
+	--BodyWrapperBackground : rgb(39 39 39 / 83%);
+	
 	--DefaultTextColor : rgb(255 255 255);
-	--SubNavigatorColor: rgba(45, 77, 109, 247);
-	--LinkColor : rgb(255 158 171);
-	--LinkHoverColor : #8f08e9;
-	--NavUpdatesInd : #0083ef;
-	--PrimaryNavBackgroundColor: #009dffe1;
-	--SecondaryNavBackgroundColor: #009dffe1;
+	--LinkColor : rgb(244 255 40);
+	--LinkHoverColor : #cfff00;
+	--PrimaryNavBackgroundColor: #646566e1;
+	--SecondaryNavBackgroundColor: #848c91e1;
 	--NavPaneBackgroundColor: #274b69;
 	--NotificationUnseenBG: #274b69;
+}
+
+/*
+@media screen and (min-width:1900px){
+    .home-page-contents_header__zRRrG{
+        --header-image-width:1900px
+    }
+    module.PageModule > div.Content:before{
+        background-image:url(https://splatoon.nintendo.com/images/svg/homepage-rip-left.svg);
+        background-position:100%;
+        left:calc((100vw - var(--header-image-width))/2 - 5px);
+    }
+    .home-page-contents_header__zRRrG:after,.home-page-contents_header__zRRrG:before{
+        background-repeat:no-repeat;
+        background-size:cover;
+        content:" ";
+        height:100%;
+        position:absolute;
+        top:0;
+        width:50px;
+        z-index:1
+    }
+    module.PageModule > div.Content:after{
+        background-image:url(https://splatoon.nintendo.com/images/svg/homepage-rip-right.svg);
+        background-position:0;
+        right:calc((100vw - var(--header-image-width))/2 - 5px);
+    }
+}
+*/
+
+
+module.PageModule > div.Content{
+	padding: 15px;
 }
 
 
@@ -47,81 +60,26 @@
 	padding: .75em;
 }
 
-.Avatar.Avatar img {
-	/* The path to becoming a 	*/
-	box-shadow : 0 0 0 0.125em rgb(162,0,183);
-}
-
 .Avatar.Offline{
-	/* Fancy neat effect lol
-	   Turns the avatar slightly transparent when the user is offline */
+	/* turns offline avatars slightly transparent */
 	opacity : 0.5;
 }
 
 .Avatar.Online{
+	/* and give online avatars a lil purple outline */
 	opacity : 1.0;
 	box-shadow : 0 0 0 0.14em rgb(162,0,183);
 }
 
-#SiteLogo img
-{
-	/* gb is gone :*/
-	display : none;
-}
-
-/* Tiny thing, but I like it */
-::-webkit-scrollbar-track {
-	background: #1b4880;
-}
-
-body[data-_sHeaderStyle=Floating] #MainContentHeader.Fixed {
-	background: rgb(0 106 191);
-}
-
 /* Pretty much every input field + their selected variants */
 input[type=text], input[type=password], input[type=password], input[type=number], input[type=email], input[type=num], input[type=tel], select, .SelectLike, option, .OptionLike, optgroup, textarea, .TextareaLike {
-	background: #0070C0;
+	background: #6b7a84;
 }
-
-/*
-spriteIcon.GamingDevicesIcon, .SpriteIcon.GamingDevicesIcon {
-    width: 31px;
-    height: 22px;
-    content: url(https://cdn.discordapp.com/attachments/748697806453080157/926350549723525120/gameing.png);
-}
-*/
-
-/*
-spriteIcon.GamingDevicesIcon.Console, spriteIcon.GamingDevicesIcon.Handheld {
-	content: url('https://cdn.discordapp.com/attachments/748697806453080157/926347813057597491/gameing.png');
-}
-*/
 
 spriteIcon.SubmissionType.Mod, .SpriteIcon.SubmissionType.Mod {
-	/*I prefer the look of the gamefile icon over the weird wrench thing, if this isn't allowed or smth tell me and I'll remove it*/
+	/* i prefer the look of the old gamefile icon over the weird wrench thing, i think it looks cooler */
 	background-position: calc(-224px*2) calc(-16px*2);
 }
-
-/*
-spriteIcon.SubmissionTypeSmall.Mod, .SpriteIcon.SubmissionTypeSmall.Mod {
-	background-position: -224px -16px;
-}
-*/
-
-spriteIcon.NavModuleIcon.SectionsNavModuleIcon, .SpriteIcon.NavModuleIcon.SectionsNavModuleIcon {
-	background-position: -800px -800px;
-	/* this isn't even correctly sized lol but i hope no one notices */
-	content: url(https://cdn.discordapp.com/attachments/748697806453080157/851614963532693504/pus.png);
-}
-
-/*
-I've always hated this annoying video, but it looks like it's mostly off-limits
-Oh well
-#main-video-container>video {
-    height: 50%;
-    width:  50%;
-}
-*/
 
 #SubNavigator {
 	display: flow-root;
@@ -129,12 +87,6 @@ Oh well
 	border-bottom-width: .125em;
 	border-bottom-style: solid;
 	border-bottom-color: var(--SubNavigatorBorderColor);
-}
-
-
-#SiteLogo:after
-{
-	content : url('https://cdn.discordapp.com/attachments/748697806453080157/841808886797565952/unPic.png');
 }
 
 [data-_ssecondarynavposition="Left"] #MainContentHeader.Fixed #SubNavigator .DropdownMenuSubNavigator > li:first-of-type {
