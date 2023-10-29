@@ -2,14 +2,32 @@
 ***
 # RSDK XML Guide
 
-This is a small guide on how to use the XML modding API in the Retro Engine V3/V4 decompilations. Not much else to say, so let's get started!
+This is a small guide on how to use the XML modding API in the Retro Engine V3/V4(/v5u) decompilations. Note that these won't do anything in Sonic Origins. Not much else to say, so let's get started!
+
 
 ## Basic Formatting
 
 The basic formatting of an XML file starts with the XML version at the top. For this tutorial, all that's needed is `<?xml version="1.0"?>`. Then, the first "class" starts. For RSDK, the only class used is `game`. In this `game` class, all the other sub-classes are contained inside of it. These sub-classes are what actually do stuff, so let's talk about them, starting with...
 
 
+## Game Name
+
+The title section of the XML file will change the game's window title, as well as changing the `[game] Version` text on the dev menu. It's fairly simple, the format is just:
+
+```xml
+	<title name="[title]"> </title>
+```
+
+The title is `[title]`, and.. that's it. For example, if I wanted a game name of "Sonic 14", then I would have
+
+```xml
+	<title name="Sonic 14"> </title>
+```
+
+
 ## Palettes
+
+<!-- TODO: add in new "colors" stuff eventually -->
 
 Although it may be a bit tedious, the XML support also allows for changing the global palette. I say that because, instead of having you input an already packed color for each index, you have to provide the R, G, and B values separately. However, it isn't my place to complain about it, so let's get on to the useful info. The format allows all 256 colors across the 8 palettes to be replaced, the format it follows is
 
@@ -126,7 +144,7 @@ This would add SFX `Shoot` and `Charged Shot` to the global SFX list, with paths
 
 ## Players
 
-Adding players is the simplest part of the XML process, as it only involves
+Adding players is one of the simplest part of the XML process, as it only involves
 
 ```xml
 <players>
@@ -187,6 +205,8 @@ Now, let's take everything we've learned and make one big game.xml file.
 ```xml
 <?xml version="1.0"?>
 <game>
+	<title name="Awesome Game :D"> </title>
+
 	<palette>
 		<color bank="0" index="0" r="255" g="0" b="255"> </color>
 		<color bank="0" index="1" r="0" g="0" b="0"> </color>
@@ -257,17 +277,19 @@ Now, let's take everything we've learned and make one big game.xml file.
 
 This (rather large) example will do a bunch of things.
 
-- First, it'll set the global palette to have the colours seen below
+- First, it'll set the window title to `Awesome Game :D`
+
+- Then, it'll set the global palette to have the colours seen below
 
 <img src="paletteExample2.png" style="height: 8;" />
 
-- Then, it'll add objects to the global item list, `Player Object`, `Partner Object`, `HUD`, `Chippit`, and `Dust Puff`. The scripts they all have will, in order, be `Players/PlayerObject.txt`, `Players/PartnerObject.txt`, `Global/HUD.txt`, `Global/Chippit.txt`, and `Global/DustPuff.txt`.
+- After that, it'll add objects to the global item list, `Player Object`, `Partner Object`, `HUD`, `Chippit`, and `Dust Puff`. The scripts they all have will, in order, be `Players/PlayerObject.txt`, `Players/PartnerObject.txt`, `Global/HUD.txt`, `Global/Chippit.txt`, and `Global/DustPuff.txt`.
 
-- After that, a few global variables will be created, namely `options.gameMode`, `options.hardMode`, `oscillation`, `player.score`, and `player.lives`. `player.score` will have a default of `100`, and `player.lives` will have a default of `3`.
+- Next, a few global variables will be created, namely `options.gameMode`, `options.hardMode`, `oscillation`, `player.score`, and `player.lives`. `player.score` will have a default of `100`, and `player.lives` will have a default of `3`.
 
-- Next, some sounds will be added to the global sounds list. `Jump` with a path of `Global/Jump.wav`, `Slide` with a path of `Global/Slide.wav`, and `Collect` with a path of `Global/Collect.wav`.
+- From there, some sounds will be added to the global sounds list. `Jump` with a path of `Global/Jump.wav`, `Slide` with a path of `Global/Slide.wav`, and `Collect` with a path of `Global/Collect.wav`.
 
-- From there, a player entry of `SCOUT` will be added to the player list. Not much else to be said here, so let's move on!
+- After that, a player entry of `SCOUT` will be added to the player list. Not much else to be said here, so let's move on!
 
 - Now, all the stages are added.
   - Presentation Stages get `TITLE SCREEN` and `CREDITS`
@@ -277,4 +299,4 @@ This (rather large) example will do a bunch of things.
 
 ## Conclusion
 
-Well, that should just be about everything. This new system allows easy-to-read XML files to be used instead of byte-based `GameConfig.bin`'s, and I'd say that's pretty good, especially for modding. As I've stated throughout this tutorial, all this _adds_ onto the things existing in the `GameConfig`, so a complete replacement can only happen if you dummy out the Game Config file. Other than that, though, have fun!
+Well, that should just be about everything. This new system allows easy-to-read XML files to be used instead of byte-based `GameConfig.bin`'s, and I'd say that's pretty good, especially for modding. As I've stated throughout this tutorial, all this _adds_ onto the things existing in the `GameConfig`, so a complete replacement can only happen if you dummy out the Game Config file ([One can be found here, if you need it-](https://github.com/Lavesiime/lavesiime.github.io/raw/master/guides/rsdkv4/xml/Dummy-GameConfig.bin)). Other than that, though, have fun!
