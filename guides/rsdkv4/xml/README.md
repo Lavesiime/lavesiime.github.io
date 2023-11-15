@@ -27,29 +27,32 @@ The title is `[title]`, and.. that's it. For example, if I wanted a game name of
 
 ## Palettes
 
-<!-- TODO: add in new "colors" stuff eventually -->
+The palette section of the XML file allows you to add new colors, not only in the first palette bank, but in all 7 other banks as well.
 
-Although it may be a bit tedious, the XML support also allows for changing the global palette. I say that because, instead of having you input an already packed color for each index, you have to provide the R, G, and B values separately. However, it isn't my place to complain about it, so let's get on to the useful info. The format allows all 256 colors across the 8 palettes to be replaced, the format it follows is
-
-```xml
-<palette>
-    <color bank="[pal ID]" index="[index]" r="[red]" g="[green]" b="[blue]"> </color>
-    [...]
-</palette>
-```
-
-For example, the below would change their corresponding colors to the colors they should have
-- index `64` would be `0x808080`, or `128`, `128`, `128`
-- index `65` would be `0x8F8F8F`, or `143`, `143`, `143`
-- index `66` would be `0x747474`, or `116`, `116`, `116`
+There are two ways of doing it - using `color` to change an individual color, or using `colors` to change several colors at a time. This guide will focus on the latter. The format is as follows
 
 ```xml
 <palette>
-    <color bank="0" index="64" r="128" g="128" b="128"> </color>
-    <color bank="0" index="65" r="143" g="143" b="143"> </color>
-    <color bank="0" index="66" r="116" g="116" b="116"> </color>
+    <colors bank="[pal ID]" start="[index]">
+        [colors]
+    </colors>
 </palette>
 ```
+
+Colors can be formatted in a variety of ways, from hexadecimal (html) `#RRGGBB`, to decimal `(r, g, b)`. Different types can be used next to one another. An example of a custom palette would be like..
+
+```xml
+<palette>
+    <colors bank="0" start="0">
+        #FF00FF 080000
+        (0, 240, 160) (224 96 128)
+    </colors>
+</palette>
+```
+
+This sample would set colors `0`-`3` in bank `0` of the global palette to the following:
+
+<img src="paletteExample1.png" style="height: 32;" />
 
 
 ## Objects
@@ -208,22 +211,24 @@ Now, let's take everything we've learned and make one big game.xml file.
 	<title name="Awesome Game :D"> </title>
 
 	<palette>
-		<color bank="0" index="0" r="255" g="0" b="255"> </color>
-		<color bank="0" index="1" r="0" g="0" b="0"> </color>
-		<color bank="0" index="2" r="32" g="32" b="128"> </color>
-		<color bank="0" index="3" r="64" g="64" b="160"> </color>
-		<color bank="0" index="4" r="96" g="96" b="192"> </color>
-		<color bank="0" index="5" r="128" g="128" b="224"> </color>
-		<color bank="0" index="6" r="224" g="224" b="224"> </color>
-		<color bank="0" index="7" r="160" g="160" b="160"> </color>
-		<color bank="0" index="8" r="128" g="128" b="128"> </color>
-		<color bank="0" index="9" r="64" g="64" b="64"> </color>
-		<color bank="0" index="10" r="224" g="160" b="128"> </color>
-		<color bank="0" index="11" r="160" g="96" b="64"> </color>
-		<color bank="0" index="12" r="224" g="0" b="0"> </color>
-		<color bank="0" index="13" r="128" g="0" b="0"> </color>
-		<color bank="0" index="14" r="64" g="0" b="0"> </color>
-		<color bank="0" index="15" r="224" g="224" b="0"> </color>
+		<colors bank="0" start="0">
+			#FF00FF
+			#000000
+			#202080
+			#4040A0
+			#6060C0
+			#8080E0
+			#E0E0E0
+			#A0A0A0
+			#808080
+			#404040
+			#E0A080
+			#A06040
+			#E00000
+			#800000
+			#400000
+			#E0E000
+		</colors>
 	</palette>
 
 	<objects>
@@ -250,6 +255,7 @@ Now, let's take everything we've learned and make one big game.xml file.
 
 	<players>
 		<player name="SCOUT"> </player>
+		<player name="SOUT"> </player>
 	</players>
 
 	<presentationStages>
@@ -279,9 +285,9 @@ This (rather large) example will do a bunch of things.
 
 - First, it'll set the window title to `Awesome Game :D`
 
-- Then, it'll set the global palette to have the colours seen below
+- Then, it'll set colors `0`-`15` of bank `0` of the global palette to the below colors:
 
-<img src="paletteExample2.png" style="height: 8;" />
+<img src="paletteExample2.png" style="height: 32;" />
 
 - After that, it'll add objects to the global item list, `Player Object`, `Partner Object`, `HUD`, `Chippit`, and `Dust Puff`. The scripts they all have will, in order, be `Players/PlayerObject.txt`, `Players/PartnerObject.txt`, `Global/HUD.txt`, `Global/Chippit.txt`, and `Global/DustPuff.txt`.
 
@@ -289,7 +295,7 @@ This (rather large) example will do a bunch of things.
 
 - From there, some sounds will be added to the global sounds list. `Jump` with a path of `Global/Jump.wav`, `Slide` with a path of `Global/Slide.wav`, and `Collect` with a path of `Global/Collect.wav`.
 
-- After that, a player entry of `SCOUT` will be added to the player list. Not much else to be said here, so let's move on!
+- After that, player entries of `SCOUT` and `COUT` will be added to the player list.
 
 - Now, all the stages are added.
   - Presentation Stages get `TITLE SCREEN` and `CREDITS`
