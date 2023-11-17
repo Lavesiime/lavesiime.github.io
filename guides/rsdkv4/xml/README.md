@@ -27,6 +27,8 @@ The title is `[title]`, and.. that's it. For example, if I wanted a game name of
 
 ## Palettes
 
+<!-- is it worth noting that RE2/SonLVL-RSDK don't support `colors` (yet)? not sure -->
+
 The palette section of the XML file allows you to add new colors, not only in the first palette bank, but in all 7 other banks as well.
 
 There are two ways of doing it - using `color` to change an individual color, or using `colors` to change several colors at a time. This guide will focus on the latter. The format is as follows
