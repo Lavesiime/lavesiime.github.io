@@ -2,7 +2,7 @@
 {
 	/* Snipped from the official Splatoon site, hope Nintendo doesn't mind
 	   - original link - https://splatoon.nintendo.com/_images/backgrounds/tapes-black.jpg */
-	--BodyBackground : url(https://cdn.discordapp.com/attachments/748697806453080157/1095526141063860224/tapes-black.png);
+	--BodyBackground : url(https://raw.githubusercontent.com/Lavesiime/lavesiime.github.io/master/gbStuff/tapes-black.png);
 	--Bodybackground-repeat: repeat; 
 	
 	--BodyWrapperBackground : rgb(39 39 39 / 83%);
