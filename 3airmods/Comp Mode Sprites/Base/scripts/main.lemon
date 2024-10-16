@@ -1,0 +1,401 @@
+// Before we do any renderhooking, we actually need to implement the renderhooking system first!
+// By default, renderhooks are only for main game, so we need to add them to comp mode
+// We can do this by hooking into the comp mode object renedring function and adding it there
+function void renderNextCompModeObject(u8 splitScreenIndex)
+{
+	u16 renderQueue = 0x9800 + u16(splitScreenIndex) * 0x400
+
+	A0 = 0xffff0000 + u16[(A4+=2)-2]
+	if (splitScreenIndex == 0)
+	{
+		objA0.render_flags &= ~render_flag.VISIBLE		// Reset visibility flag
+		D6.u8 = objA0.render_flags
+		if (D6 & 0x10)
+			return
+	}
+	else
+	{
+		D6.u8 = objA0.render_flags
+		if (D6 & 0x08)
+			return
+	}
+
+	u16 offsetY = splitScreenIndex * 0x70
+
+	D0.u16 = objA0.position.x.u16
+	D1.u16 = objA0.position.y.u16
+
+	// Special handling for compound objects
+	if (objA0.render_flags & render_flag.COMPOUND)
+	{
+		D0.u16 = (D0.u16 - u16[A3] + objA0.box_size.x) & u16[0xffffeea8]
+		D3.u16 = objA0.box_size.x
+		D2.u16 = getScreenWidth() + objA0.box_size.x * 2
+		if (D0.u16 >= D2.u16)
+			return
+
+		D0.u16 = D0.u16 + 0x80 + offsetY - D3.u16
+		D1.u16 = (D1.u16 - u16[A3 + 0x04] + objA0.box_size.y) & level.height.bitmask
+		D3.u16 = objA0.box_size.y
+		D2.u16 = 0x70 + objA0.box_size.y * 2
+		if (D1.u16 >= D2.u16)
+			return
+
+		D1.u16 = D1.u16 + 0x80 - D3.u16
+		objA0.render_flags |= render_flag.VISIBLE	// Set visibility flag
+
+		// Insert renderhook checks here
+		// - For our player purposes, it isn't needed, but might as well do it anyways for full comp mode sprite support
+		Renderer.setSpriteTagWithPosition(A0, D0.u16, D1.u16)
+		if (Standalone.onWriteToSpriteTable(D0.u16 - 0x80, D1.u16 - 0x80, renderQueue))
+			return
+
+		if (D7.s16 < 0)
+			return
+
+		D5.u16 = objA0.sprite_attributes
+		A2 = objA0.mapping_offset
+		D4 = objA0.animation.sprite
+		if (D4.u8 != 0)
+		{
+			A1 = tableLookupAddress(A2, D4.u16 * 2)
+			D4.s16 = s16[A1] - 1
+			A1 += 2
+			if (D4.s16 >= 0)
+			{
+				D3.u16 = D6.u16
+				writeToSpriteTableCompound(renderQueue)
+				D6.u16 = D3.u16
+				if (D7.s16 < 0)
+					return
+			}
+		}
+
+		D3.u16 = objA0.position.y.frac - 1
+		if (D3.s16 >= 0)
+		{
+			A0 += 0x18
+			while (D3.s16 >= 0 && D7.s16 >= 0)
+			{
+				D0.u16 = (u16[A0]   - u16[A3]   + 0x80) & u16[0xffffeea8]
+				D1.u16 = (u16[A0+2] - u16[A3+4] + 0x80) & level.height.bitmask
+				D1.u16 += offsetY
+				D4 = u8[A0+5]
+				A0 += 6
+
+				A1 = tableLookupAddress(A2, D4.u16 * 2)
+				D4.s16 = s16[A1] - 1
+				A1 += 2
+				if (D4.s16 >= 0)
+				{
+					u16 backupD6 = D6.u16
+					writeToSpriteTableCompound(renderQueue)
+					D6.u16 = backupD6
+				}
+				--D3.s16
+			}
+		}
+	}
+	else
+	{
+		if (D6 & render_flag.WORLD)
+		{
+			D0.u16 = (D0.u16 - u16[A3] + objA0.box_size.x) & u16[0xffffeea8]
+			D3.u16 = objA0.box_size.x
+			D2.u16 = getScreenWidth() + objA0.box_size.x * 2
+			if (D0.u16 >= D2.u16)
+				return
+
+			D0.u16 = D0.u16 + 0x80 - D3.u16
+			D1.u16 = (D1.u16 - u16[A3 + 0x04] + objA0.box_size.y) & level.height.bitmask
+			D3.u16 = objA0.box_size.y
+			D2.u16 = 0x70 + objA0.box_size.y * 2
+			if (D1.u16 >= D2.u16)
+				return
+
+			D1.u16 = D1.u16 + 0x80 - D3.u16
+		}
+		D1.u16 += offsetY
+
+		objA0.render_flags |= 0x80
+
+		// Insert renderhook checks here
+		Renderer.setSpriteTagWithPosition(A0, D0.u16, D1.u16)
+		if (Standalone.onWriteToSpriteTable(D0.u16 - 0x80, D1.u16 - 0x80, renderQueue))
+			return
+
+		if (D7.s16 >= 0)
+		{
+			A1 = objA0.mapping_offset
+			D4 = 0
+			if ((D6 & 0x20) == 0)
+			{
+				D4.u16 = u16(objA0.animation.sprite) * 2
+				A1 += u16[A1 + D4.u16]
+				D4.u16 = u16[(A1+=2)-2] - 1
+			}
+
+			if (D4.s16 >= 0)
+			{
+				D5.u16 = objA0.sprite_attributes
+				writeToSpriteTable(renderQueue)
+			}
+		}
+	}
+}
+
+// lil hook to make sure each player always renders instead of flickering :3
+function void CompetitionMode.Character.BaseUpdate(u32 mainRoutineTableAddress)
+{
+	base.CompetitionMode.Character.BaseUpdate(mainRoutineTableAddress)
+
+	char.render_flags &= (A0 == 0xffffb000) ? ~render_flag.COMPETITION_P1_SCREEN : ~render_flag.COMPETITION_P2_SCREEN
+}
+
+// And don't forget about custom palettes, too!
+// Can't have everyone using Sonic's base colours...
+function string getCharacterPaletteKey(u8 character)
+{
+	if (!competition_mode.active)
+		return base.getCharacterPaletteKey(character)
+	
+	return getCompetitionCharacterPaletteKey(character)
+}
+
+// Alright, now that we've added the renderhooking system, we can actually use them now!
+// This just builds off the normal renderhook code, so if you're familiar with that, this shouldn't be too different
+function bool Standalone.onWriteToSpriteTable(s16 px, s16 py, u16 renderQueue)
+{
+	// Only for comp mode, of course
+	if (!competition_mode.active)
+		return base.Standalone.onWriteToSpriteTable(px, py, renderQueue)
+
+	// Used by most renderhooks so might as well just put this here outside of any specific hook
+	bool prioFlag = (objA0.sprite_attributes & 0x8000) != 0
+
+	// Should probably just separate this function from the standalone ver and make this a new param instead of doing this.. but i don't wanna change the function sig three years in and possibly break existing mods
+	u8 screenIndex = renderQueue >= (0x9800 + 0x400)
+
+	// Players and their accessories
+	{
+		// Comp mode player character
+		if (objA0.update_address == 0x0105c4 || objA0.update_address == 0x013102)
+		{
+			u64 key
+			u8 atex = 0x40 + char.character * 0x20
+			u8 animationSprite = objA0.animation.sprite
+			u8 flags = (char.render_flags & (render_flag.FLIP_X | render_flag.FLIP_Y))
+			u8 angle
+			u8 alpha = 0xff
+
+			if (Game.getSetting(SETTING_SMOOTH_ROTATION))
+			{
+				u8 startingFrame = 0
+				u8 frameCount	 = 0
+
+				if (animationSprite >= 0x01 && animationSprite <= 0x0c)
+				{
+					startingFrame	= 0x01
+					frameCount		= 3
+				}
+				else if (animationSprite >= 0x0d && animationSprite <= 0x14)
+				{
+					startingFrame	= 0x0d
+					frameCount		= 2
+				}
+
+				if (startingFrame != 0 && frameCount != 0)
+				{
+					angle = char.rotation
+					flags = char.flags & char.flag.FACING_LEFT
+					animationSprite = startingFrame + (animationSprite - startingFrame) % frameCount
+				
+					bool useS3AIRStyle = (Game.getSetting(SETTING_SMOOTH_ROTATION) == 2) ? (char.flags & char.flag.IN_AIR) : true
+					if (useS3AIRStyle)
+					{
+						// S3AIR rotation
+						s8 oldRotation = (A0 == 0xffffb000) ? oldRotationPlayer1 : oldRotationPlayer2
+
+						if (abs(s8(char.rotation)) <= 0x10 && abs(s8(oldRotation)) <= 0x10)
+						{
+							angle = 0
+						}
+
+						if (angle != char.rotation)
+						{
+							s8 diff = angle - oldRotation
+							angle = oldRotation + clamp(diff, -3, 3) // (btw for Mania-accurate i think it would be 2 instead of 3? idk though, don't ask me)
+						}
+					}
+					else
+					{
+						// "Mania-accurate" ground rotation, based on what Elsie did for the maingame characters
+						u8 oldRotation = (A0 == 0xffffb000) ? oldRotationPlayer1 : oldRotationPlayer2
+
+						if (char.rotation <= 0x04 || char.rotation >= 0xfc)
+						{
+							oldRotation = 0
+						}
+						else
+						{
+							u8 targetRotation = 0
+							if (char.rotation > 0x10 && char.rotation < 0xe8)
+								targetRotation = char.rotation
+
+							// okay so tbh this code as a whole feels kinda iffy,,, but this is how the base game does it so let's go with this
+							u32 rotate = targetRotation - oldRotation
+							u32 shift = (abs(char.groundspeed) <= 0x600) + 1 // in the original scripts this is 0x6000? but i'm p sure that's wrong, cause.. i sure *hope* you're not going above 0x60px a frame..
+
+							if (abs(rotate) >= abs(rotate - 0x100))
+							{
+								if (abs(rotate - 0x200) < abs(rotate + 0x100))
+									oldRotation += (rotate - 0x100) >> shift
+								else
+									oldRotation += (rotate + 0x100) >> shift
+							}
+							else
+							{
+								if (abs(rotate) < abs(rotate + 0x100))
+									oldRotation += rotate >> shift
+								else
+									oldRotation += (rotate + 0x100) >> shift
+							}
+						}
+
+						angle = oldRotation & 0xff
+					}
+				}
+
+				// Store old angle for use next frame
+				if (A0 == 0xffffb000)
+					oldRotationPlayer1 = angle
+				else
+					oldRotationPlayer2 = angle
+			}
+
+			// Instead of flickering the sprite, just draw it slightly transparent
+			u32 address = (screenIndex == 1) ? 0xffffb04a : 0xffffb000
+			if (address != A0 && u32[address] && u8[address + 0x38] == char.character)
+				alpha = 0xc0
+
+			key = stringformat(stringformat("%s_0x%02x", getCompetitionCharacterSpriteKey(char.character)), animationSprite)
+
+			if (!Renderer.hasCustomSprite(key))
+			{
+				u32 sourceBase    = (char.character == CHARACTER_SONIC) ? 0x337780 : (char.character == CHARACTER_TAILS) ? 0x33a840 : 0x33db60
+				u32 tableAddress  = (char.character == CHARACTER_SONIC) ? 0x29fde4 : (char.character == CHARACTER_TAILS) ? 0x2a013e : 0x2a0498
+				u32 mappingOffset = (char.character == CHARACTER_SONIC) ? 0x29fc3a : (char.character == CHARACTER_TAILS) ? 0x29fee6 : 0x2a02aa
+
+				// Note - mappingOffset isn't necessary as "char.mapping_offset" could be used instead, but this just looks more neat
+
+				key = Renderer.setupCustomCharacterSprite(sourceBase, tableAddress, mappingOffset, animationSprite, 0x00)
+			}
+
+			Renderer.drawCustomSprite(key, px, py, atex, flags | (prioFlag ? SPRITE_FLAG_PRIO : 0), renderQueue, angle, alpha)
+			return true
+		}
+
+		// Tails's tails
+		if (objA0.update_address == 0x016232)
+		{
+			u8 atex = 0x60 	// Use Tails's palette row
+			u8 angle = 0
+			u8 flags = (char.render_flags & (render_flag.FLIP_X | render_flag.FLIP_Y))
+			u8 animationSprite = objA0.animation.sprite
+			u8 alpha = 0xff
+			
+			if (Game.getSetting(SETTING_SMOOTH_ROTATION))
+			{
+				if (animationSprite >= 0x04 && animationSprite <= 0x0f)
+				{
+					u32 characterAddress = 0xffff0000 + u16[A0 + 0x30]
+					
+					animationSprite = 0x04 + (animationSprite - 0x04) % 3
+					angle = lookupAngleByVector(s16[characterAddress + 0x18], s16[characterAddress + 0x1a])
+
+					flags = 0
+					if (char.flags & char.flag.FACING_LEFT)
+					{
+						flags |= SPRITE_FLAG_FLIP_X
+						angle += 0x80
+					}
+				}
+			}
+
+			// Normally Tails's tails don't flicker with his main body, but let's go ahead and make 'em match here
+			// (so now his tails get to be slightly transparent, too! :D)
+			u32 address = (screenIndex == 1) ? 0xffffcc0a : 0xffffcbc0
+			if (address != A0 && u32[address])
+				alpha = 0xc0
+
+			u64 key = stringformat("comp_character_tails_tails_0x%02x", animationSprite)
+
+			if (!Renderer.hasCustomSprite(key))
+				key = Renderer.setupCustomCharacterSprite(0x33d5e0, 0x2a024c, 0x2a00a4, animationSprite, 0x00)
+			
+			Renderer.drawCustomSprite(key, px, py, atex, flags | (prioFlag ? SPRITE_FLAG_PRIO : 0), renderQueue, angle, alpha)
+			return true
+		}
+	}
+
+	return base.Standalone.onWriteToSpriteTable(px, py, renderQueue)
+}
+
+
+// Overload the function that copies palettes from ROM to RAM
+function void copyPaletteDataFromTable(u8 index, u16 ramAddress)
+{
+	base.copyPaletteDataFromTable(index, ramAddress)
+
+	if (getCompZoneInitials(index))
+	{
+		// Find destination of where to load the palette
+		// (A1 is already set to the correct value by calling base)
+		u32 dest = (0xffff0000 + u16[A1+4]) + ramAddress - 0xfbe0
+
+		string key = stringformat("zone_palette_%s", getCompZoneInitials(index))
+
+		// Load palette into temporary buffer
+		// -> Can't be loaded directly since Oxygen's palette format is different from what's needed here
+		u16 numColors = System.loadExternalPaletteData(key, 0, 0x800000, 0x20)
+
+		for (u8 i = 0; i < numColors; ++i)
+		{
+			u32 rgba = u32[0x800000 + i * 4]
+			u16[dest + i * 2] = packColorExt(rgba)
+		}
+
+		zeroMemory(0x800000, numColors * 4)
+	}
+}
+
+
+// Returns zone initials based on palette index given
+// (Can be adapted for use in normal zones but that's not something I'm ready to unleash yet)
+function string getCompZoneInitials(u8 index)
+{
+	if (index == 0x26)
+		return "alz"
+	if (index == 0x28)
+		return "bpz"
+	if (index == 0x34)
+		return "dpz"
+	if (index == 0x35)
+		return "cgz"
+	if (index == 0x36)
+		return "emz"
+
+	return 0
+}
+
+// even if it's been three years, it's never too late to offload these into external functions--
+
+function string getCompetitionCharacterPaletteKey(u8 character)
+{
+	return (character == CHARACTER_SONIC) ? "comp_character_palette_sonic" : (character == CHARACTER_TAILS) ? "comp_character_palette_tails" : "comp_character_palette_knuckles"
+}
+
+function string getCompetitionCharacterSpriteKey(u8 character)
+{
+	return (character == CHARACTER_SONIC) ? "comp_character_sonic" : (character == CHARACTER_TAILS) ? "comp_character_tails" : "comp_character_knuckles"
+}
