@@ -15,13 +15,13 @@ The basic formatting of an XML file starts with the XML version at the top. For 
 The title section of the XML file will change the game's window title, as well as changing the `[game] Version` text on the dev menu. It's fairly simple, the format is just:
 
 ```xml
-	<title name="[title]"> </title>
+	<title name="[title]" />
 ```
 
 The title is `[title]`, and.. that's it. For example, if I wanted a game name of "Sonic 14", then I would have
 
 ```xml
-	<title name="Sonic 14"> </title>
+	<title name="Sonic 14" />
 ```
 
 
@@ -63,7 +63,7 @@ The objects section of the XML file deals with adding global objects for the gam
 
 ```xml
 <objects>
-    <object name="[object name]" script="[script path]" forceLoad="[true/false]"> </object>
+    <object name="[object name]" script="[script path]" forceLoad="[true/false]" />
     [...]
 </objects>
 ```
@@ -81,8 +81,8 @@ For example...
 
 ```xml
 <objects>
-    <object name="Coin" script="Global/Coin.txt" forceLoad="false"> </object>
-    <object name="Shoe" script="Global/Shoe.txt" forceLoad="true"> </object>
+    <object name="Coin" script="Global/Coin.txt" forceLoad="false" />
+    <object name="Shoe" script="Global/Shoe.txt" forceLoad="true" />
 </objects>
 ```
 
@@ -97,7 +97,7 @@ Global variables are variables that are, well, global and can be changed by any 
 
 ```xml
 <variables>
-    <variable name="[variable name]" value="[default value]"> </variable>
+    <variable name="[variable name]" value="[default value]" />
     [...]
 </variables>
 ```
@@ -106,8 +106,8 @@ Of course, `[variable name]` is replaced with your actual variable name, and `[d
 
 ```xml
 <variables>
-    <variable name="options.remixedMusic" value="1"> </variable>
-    <variable name="options.customPalettes" value="1"> </variable>
+    <variable name="options.remixedMusic" value="1" />
+    <variable name="options.customPalettes" value="1" />
 </variables>
 ```
 
@@ -122,7 +122,7 @@ For RSDKv3 (Sonic CD), the format used follows the below, where `sfx path` is th
 
 ```xml
 <sounds>
-    <soundfx path="[sfx path]"> </soundfx>
+    <soundfx path="[sfx path]" />
     [...]
 </sounds>
 ```
@@ -131,7 +131,7 @@ For RSDKv4 (Sonic 1/2), the format adds the `name` parameter, to allow for `SfxN
 
 ```xml
 <sounds>
-    <soundfx name="[sfx name]" path="[sfx path]"> </soundfx>
+    <soundfx name="[sfx name]" path="[sfx path]" />
     [...]
 </sounds>
 ```
@@ -140,8 +140,8 @@ An example of an RSDKv4 one would be like...
 
 ```xml
 <sounds>
-    <soundfx name="Shoot" path="Global/Shoot.wav"> </soundfx>
-    <soundfx name="Charged Shot" path="Global/ChargedShot.wav"> </soundfx>
+    <soundfx name="Shoot" path="Global/Shoot.wav" />
+    <soundfx name="Charged Shot" path="Global/ChargedShot.wav" />
 </sounds>
 ```
 
@@ -153,7 +153,7 @@ Adding players is one of the simplest part of the XML process, as it only involv
 
 ```xml
 <players>
-    <player name="[player name]"> </player>
+    <player name="[player name]" />
     [...]
 </players>
 ```
@@ -162,8 +162,8 @@ Every entry in this `players` class adds one entry to the selectable players on 
 
 ```xml
 <players>
-    <player name="NASH"> </player>
-    <player name="RINGO"> </player>
+    <player name="NASH" />
+    <player name="RINGO" />
 </players>
 ```
 
@@ -175,7 +175,7 @@ The format for stages is perhaps the most complex out of the bunch, but not beca
 
 ```xml
 <[stagelist]>
-    <stage name="[stage title]" folder="[stage folder]" id="[stage ID]" highlight="[true/false]"> </stage>
+    <stage name="[stage title]" folder="[stage folder]" id="[stage ID]" highlight="[true/false]" />
 </[stagelist]>
 ```
 
@@ -196,7 +196,7 @@ An example would be the following...
 
 ```xml
 <bonusStages>
-    <stage name="LEVEL EDITOR" folder="LevED" id="1" highlight="true"> </stage>
+    <stage name="LEVEL EDITOR" folder="LevED" id="1" highlight="true" />
 </bonusStages>
 ```
 
@@ -210,7 +210,7 @@ Now, let's take everything we've learned and make one big game.xml file.
 ```xml
 <?xml version="1.0"?>
 <game>
-	<title name="Awesome Game :D"> </title>
+	<title name="Awesome Game :D" />
 
 	<palette>
 		<colors bank="0" start="0">
@@ -234,51 +234,51 @@ Now, let's take everything we've learned and make one big game.xml file.
 	</palette>
 
 	<objects>
-		<object name="Player Object" script="Players/PlayerObject.txt" forceLoad="false"> </object>
-		<object name="Partner Object" script="Players/PartnerObject.txt" forceLoad="false"> </object>
-		<object name="HUD" script="Global/HUD.txt" forceLoad="false"> </object>
-		<object name="Chippit" script="Global/Chippit.txt" forceLoad="false"> </object>
-		<object name="Dust Puff" script="Global/DustPuff.txt" forceLoad="false"> </object>
+		<object name="Player Object" script="Players/PlayerObject.txt" forceLoad="false" />
+		<object name="Partner Object" script="Players/PartnerObject.txt" forceLoad="false" />
+		<object name="HUD" script="Global/HUD.txt" forceLoad="false" />
+		<object name="Chippit" script="Global/Chippit.txt" forceLoad="false" />
+		<object name="Dust Puff" script="Global/DustPuff.txt" forceLoad="false" />
 	</objects>
 
 	<variables>
-		<variable name="options.gameMode" value="0"> </variable>
-		<variable name="options.hardMode" value="0"> </variable>
-		<variable name="oscillation" value="0"> </variable>
-		<variable name="player.score" value="100"> </variable>
-		<variable name="player.lives" value="3"> </variable>
+		<variable name="options.gameMode" value="0" />
+		<variable name="options.hardMode" value="0" />
+		<variable name="oscillation" value="0" />
+		<variable name="player.score" value="100" />
+		<variable name="player.lives" value="3" />
 	</variables>
 
 	<sounds>
-		<soundfx name="Jump" path="Global/Jump.wav"> </soundfx>
-		<soundfx name="Slide" path="Global/Slide.wav"> </soundfx>
-		<soundfx name="Collect" path="Global/Collect.wav"> </soundfx>
+		<soundfx name="Jump" path="Global/Jump.wav" />
+		<soundfx name="Slide" path="Global/Slide.wav" />
+		<soundfx name="Collect" path="Global/Collect.wav" />
 	</sounds>
 
 	<players>
-		<player name="SCOUT"> </player>
-		<player name="SOUT"> </player>
+		<player name="SCOUT" />
+		<player name="PENNY" />
 	</players>
 
 	<presentationStages>
-		<stage name="TITLE SCREEN" folder="Title" id="1" highlight="true"> </stage>
-		<stage name="CREDITS" folder="Credits" id="1" highlight="true"> </stage>
+		<stage name="TITLE SCREEN" folder="Title" id="1" highlight="true" />
+		<stage name="CREDITS" folder="Credits" id="1" highlight="true" />
 	</presentationStages>
 
 	<regularStages>
-		<stage name="GREEN PLAINS 1" folder="Level-01" id="1" highlight="true"> </stage>
-		<stage name="2" folder="Level-01" id="2" highlight="false"> </stage>
-		<stage name="3" folder="Level-01" id="3" highlight="false"> </stage>
+		<stage name="GREEN PLAINS 1" folder="Level-01" id="1" highlight="true" />
+		<stage name="2" folder="Level-01" id="2" highlight="false" />
+		<stage name="3" folder="Level-01" id="3" highlight="false" />
 	</regularStages>
 
 	<specialStages>
-		<stage name="SPECIAL STAGE" folder="SpecialS" id="1" highlight="true"> </stage>
-		<stage name="2" folder="SpecialS" id="2" highlight="false"> </stage>
+		<stage name="SPECIAL STAGE" folder="SpecialS" id="1" highlight="true" />
+		<stage name="2" folder="SpecialS" id="2" highlight="false" />
 	</specialStages>
 
 	<bonusStages>
-		<stage name="BONUS GAME 1" folder="BonusS" id="1" highlight="true"> </stage>
-		<stage name="2" folder="BonusS" id="2" highlight="false"> </stage>
+		<stage name="BONUS GAME 1" folder="BonusS" id="1" highlight="true" />
+		<stage name="2" folder="BonusS" id="2" highlight="false" />
 	</bonusStages>
 </game>
 ```
@@ -297,7 +297,7 @@ This (rather large) example will do a bunch of things.
 
 - From there, some sounds will be added to the global sounds list. `Jump` with a path of `Global/Jump.wav`, `Slide` with a path of `Global/Slide.wav`, and `Collect` with a path of `Global/Collect.wav`.
 
-- After that, player entries of `SCOUT` and `COUT` will be added to the player list.
+- After that, player entries of `SCOUT` and `PENNY` will be added to the player list.
 
 - Now, all the stages are added.
   - Presentation Stages get `TITLE SCREEN` and `CREDITS`
