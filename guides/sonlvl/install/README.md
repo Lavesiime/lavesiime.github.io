@@ -1,7 +1,3 @@
-# lavesiime.github.io
-
-***
-
 # SonLVL-RSDK: Getting Started
 
 Welcome to the SonLVL-RSDK setup guide!
@@ -73,3 +69,6 @@ Now, go to **File** > **Change Level...**, select a level, and edit to your hear
 
 That’s it! You're all set to start creating and modding the levels for your favourite classic Sonic games! Dive in, play around, and have fun! If you ever get stuck or have any questions, feel free to join the [Retro Engine Modding Server](https://dc.railgun.works/retroengine) - we'd all be happy to help!
 
+<p align="center">
+	<img src="SonLVL-8.png" alt="The start of Green Hill Zone Act 2, opened in SonLVL-RSDK." style="width:50%;" />
+</p>
