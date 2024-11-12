@@ -70,5 +70,7 @@ Now, go to **File** > **Change Level...**, select a level, and edit to your hear
 That’s it! You're all set to start creating and modding the levels for your favourite classic Sonic games! Dive in, play around, and have fun! If you ever get stuck or have any questions, feel free to join the [Retro Engine Modding Server](https://dc.railgun.works/retroengine) - we'd all be happy to help!
 
 <p align="center">
-	<img src="SonLVL-8.png" alt="The start of Green Hill Zone Act 2, opened in SonLVL-RSDK." style="width:50%;" />
+	<img src="SonLVL-D1.png" alt="The start of Green Hill Zone Act 2, opened in SonLVL-RSDK." style="width:50%;" /> <img src="SonLVL-D2.png" alt="Metallic Madness Act 2's foreground being edited." style="width:50%;" />
+	<br>
+	<img src="SonLVL-D3.png" alt="Wing Fortress's chunks being edited." style="width:50%;" /> <img src="SonLVL-D4.png" alt="Wacky Workbench Act 1 Past's background parallax being edited." style="width:50%;" />
 </p>
