@@ -1,4 +1,4 @@
-# SonLVL-RSDK: Getting Started
+## SonLVL-RSDK: Getting Started
 
 Welcome to the SonLVL-RSDK setup guide!
 This tool lets you easily modify levels in the mobile remakes of *Sonic 1*, *Sonic 2*, and *Sonic CD*.
