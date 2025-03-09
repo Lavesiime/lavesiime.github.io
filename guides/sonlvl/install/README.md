@@ -36,7 +36,7 @@ Next, on the same page, grab the project files for the game you want to edit. Fo
 
 ### Step 3: Open SonLVL-RSDK & Load Your Game
 
-Now, open SonLVL-RSDK.exe. Drag and drop your game's SonLVL.ini file (included in the previous step) into the program window. Now your game should be loaded!
+Now, open SonLVL-RSDK.exe. Drag and drop your game's SonLVL.ini file (included in the previous step) into the program window. Now your game should be loaded, and SonLVL-RSDK's icon and title should show that!
 
 > **Tip:** Just make sure you’re dragging the *SonLVL.ini* file, not the *settings.ini* file  (which is part of the game decompilation files, not SonLVL's files, so you don't wanna use that one!)
 
@@ -49,7 +49,7 @@ Now, open SonLVL-RSDK.exe. Drag and drop your game's SonLVL.ini file (included i
 
 Using the top navigation bar, go to **File** > **Select Mod** > **New Mod...** to create a new mod. Fill out the form with your mod's details, and you’re good to go!
 
-> **Tip:** For next time, you don't need to manually drop your SonLVL.ini file or anything! Instead, you can just go to **File** > **Recent Mods**, and select your mod and game both in one click!
+> **Tip:** For next time, you don't need to manually drop your SonLVL.ini file or anything! Instead, after opening SonLVL-RSDK, you can just go to **File** > **Recent Mods**, and select both your game and your mod in one click!
 
 <p align="center">
 	<sup>Now, create your mod..<br></sup>
@@ -68,6 +68,8 @@ Now, go to **File** > **Change Level...**, select a level, and edit to your hear
 ### And You’re Ready to Go!
 
 That’s it! You're all set to start creating and modding the levels for your favourite classic Sonic games! Dive in, play around, and have fun! If you ever get stuck or have any questions, feel free to join the [Retro Engine Modding Server](https://dc.railgun.works/retroengine) - we'd all be happy to help!
+
+<!-- For further information, feel free to look around the rest of the [SonLVL-RSDK wiki](https://lavesiime.github.io/guides/sonlvl/wiki/)!-->
 
 <p align="center">
 	<img src="SonLVL-D1.png" alt="The start of Green Hill Zone Act 2, opened in SonLVL-RSDK." style="width:45%;" /> <img src="SonLVL-D2.png" alt="Metallic Madness Act 2's foreground being edited." style="width:45%;" />
