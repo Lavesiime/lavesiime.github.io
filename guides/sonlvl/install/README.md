@@ -26,7 +26,7 @@ Next, on the same page, grab the project files for the game you want to edit. Fo
 
 <p align="center">
 	<sup>The project files on the GitHub releases page. Pick the one that matches your game!<br></sup>
-	<img src="SonLVL-3.png" alt="An image of the SonLVL-RSDK releases page, with the game project files circled." style="width:75%;" />
+	<img src="SonLVL-3.png" alt="An image of the SonLVL-RSDK releases page, with the game project files circled." style="width:45%;" />
 </p>
 
 Extract the ZIP into the same folder as your game’s `.exe` file.
