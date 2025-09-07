@@ -6,12 +6,12 @@ This guide will walk you through setting everything up and getting SonLVL-RSDK s
 
 ### Step 1: Download SonLVL-RSDK
 
-First, head over to the [SonLVL-RSDK releases page](https://github.com/Lavesiime/SonLVL-RSDK/releases) and download the latest version of the program. Once it's downloaded, just extract the files to any folder on your computer.
+First, head over to the [SonLVL-RSDK GameBanana page](https://gamebanana.com/tools/8369) and download the latest version of the program. Once it's downloaded, just extract the files to any folder on your computer.
 
 > **Warning:** Since SonLVL-RSDK works with multiple games, it’s best to keep it in its own folder. Don’t put it in the same folder as your game files - things can get a little messy that way!
 
 <p align="center">
-	<sup>SonLVL-RSDK on the GitHub releases page.<br></sup>
+	<sup>SonLVL-RSDK on the GameBanana page.<br></sup>
 	<img src="SonLVL-1.png" alt="An image of the SonLVL-RSDK releases page, with SonLVL-RSDK.exe circled." style="width:75%;" />
 </p>
 
@@ -25,7 +25,7 @@ First, head over to the [SonLVL-RSDK releases page](https://github.com/Lavesiime
 Next, on the same page, grab the project files for the game you want to edit. For example, if you’re working with *Sonic 1*, download the `Sonic1.zip` file.
 
 <p align="center">
-	<sup>The project files on the GitHub releases page. Pick the one that matches your game!<br></sup>
+	<sup>The project files on the GameBanana page. Pick the one that matches your game!<br></sup>
 	<img src="SonLVL-3.png" alt="An image of the SonLVL-RSDK releases page, with the game project files circled." style="width:45%;" />
 </p>
 
