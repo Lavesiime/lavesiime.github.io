@@ -1,14 +1,14 @@
 ## SonLVL-RSDK: Getting Started
 
 Welcome to the SonLVL-RSDK setup guide!
-This tool lets you easily modify levels in the mobile remakes of *Sonic 1*, *Sonic 2*, and *Sonic CD*.
-Let’s get you set up quickly so you can start editing levels and creating your own mods in no time!
+SonLVL-RSDK is a level editor designed for the Retro Engine versions of *Sonic 1*, *Sonic 2*, and *Sonic CD*, from editing existing levels to creating entirely brand new ones!
+This guide will walk you through setting everything up and getting SonLVL-RSDK started for the first time.
 
 ### Step 1: Download SonLVL-RSDK
 
 First, head over to the [SonLVL-RSDK releases page](https://github.com/Lavesiime/SonLVL-RSDK/releases) and download the latest version of the program. Once it's downloaded, just extract the files to any folder on your computer.
 
-> **Tip:** Since SonLVL-RSDK works with multiple games, it’s best to keep it in its own folder. Don’t put it in the same folder as your game files - things can get a little messy that way!
+> **Warning:** Since SonLVL-RSDK works with multiple games, it’s best to keep it in its own folder. Don’t put it in the same folder as your game files - things can get a little messy that way!
 
 <p align="center">
 	<sup>SonLVL-RSDK on the GitHub releases page.<br></sup>
@@ -22,12 +22,14 @@ First, head over to the [SonLVL-RSDK releases page](https://github.com/Lavesiime
 
 ### Step 2: Grab the Project Files for Your Game
 
-Next, on the same page, grab the project files for the game you want to edit. For example, if you’re working with *Sonic 1*, download the `Sonic1.zip` file. Extract the ZIP into the same folder where your game’s `.exe` file.
+Next, on the same page, grab the project files for the game you want to edit. For example, if you’re working with *Sonic 1*, download the `Sonic1.zip` file.
 
 <p align="center">
 	<sup>The project files on the GitHub releases page. Pick the one that matches your game!<br></sup>
 	<img src="SonLVL-3.png" alt="An image of the SonLVL-RSDK releases page, with the game project files circled." style="width:75%;" />
 </p>
+
+Extract the ZIP into the same folder as your game’s `.exe` file.
 
 <p align="center">
 	<sup>The extracted project files. Make sure they're right next to your game!<br></sup>
@@ -36,9 +38,9 @@ Next, on the same page, grab the project files for the game you want to edit. Fo
 
 ### Step 3: Open SonLVL-RSDK & Load Your Game
 
-Now, open SonLVL-RSDK.exe. Drag and drop your game's SonLVL.ini file (included in the previous step) into the program window. Now your game should be loaded, and SonLVL-RSDK's icon and title should show that!
+Now, open SonLVL-RSDK.exe. Drag and drop your game's SonLVL project file (included in the previous step) into the program window. For example, if you're working with *Sonic 1*, you would drag the `Sonic1-SonLVL.ini` file into the program (or `Sonic2-SonLVL.ini` for *Sonic 2*, or `SonicCD-SonLVL.ini` for *Sonic CD*, etc). Now your game should be loaded, and SonLVL-RSDK's icon and title should show that!
 
-> **Tip:** Just make sure you’re dragging the *SonLVL.ini* file, not the *settings.ini* file  (which is part of the game files, not SonLVL's files, so you don't wanna use that one!)
+> **Warning:** Just make sure you’re dragging the *SonLVL.ini* file, not the *settings.ini* file  (which is part of the game files, not SonLVL's files, so you don't wanna use that one!)
 
 <p align="center">
 	<sup>Just drag it over, and then..<br></sup>
@@ -49,7 +51,7 @@ Now, open SonLVL-RSDK.exe. Drag and drop your game's SonLVL.ini file (included i
 
 Using the top navigation bar, go to **File** > **Select Mod** > **New Mod...** to create a new mod. Fill out the form with your mod's details, and you’re good to go!
 
-> **Tip:** For next time, you don't need to manually drop your SonLVL.ini file or anything! Instead, after opening SonLVL-RSDK, you can just go to **File** > **Recent Mods**, and select both your game and your mod in one click!
+> **Tip:** For next time, you don't need to manually drag your SonLVL.ini file or anything! Instead, after opening SonLVL-RSDK, you can just go to **File** > **Recent Mods**, and select both your game and your mod in one click!
 
 <p align="center">
 	<sup>Now, create your mod..<br></sup>
