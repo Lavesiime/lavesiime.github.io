@@ -12,7 +12,7 @@ First, head over to the [SonLVL-RSDK GameBanana page](https://gamebanana.com/too
 
 <p align="center">
 	<sup>SonLVL-RSDK on the GameBanana page.<br></sup>
-	<img src="SonLVL-1.png" alt="An image of the SonLVL-RSDK releases page, with SonLVL-RSDK.exe circled." style="width:75%;" />
+	<img src="SonLVL-1.png" alt="An image of the SonLVL-RSDK GameBanana page, with SonLVL-RSDK.zip circled." style="width:75%;" />
 </p>
 
 <p align="center">
@@ -26,7 +26,7 @@ Next, on the same page, grab the project files for the game you want to edit. Fo
 
 <p align="center">
 	<sup>The project files on the GameBanana page. Pick the one that matches your game!<br></sup>
-	<img src="SonLVL-3.png" alt="An image of the SonLVL-RSDK releases page, with the game project files circled." style="width:45%;" />
+	<img src="SonLVL-3.png" alt="An image of the SonLVL-RSDK GameBanana page, with the game project files circled." style="width:45%;" />
 </p>
 
 Extract the ZIP into the same folder as your game’s `.exe` file.
@@ -69,7 +69,7 @@ Now, go to **File** > **Change Level...**, select a level, and edit to your hear
 
 ### And You’re Ready to Go!
 
-That’s it! You're all set to start creating and modding the levels for your favourite classic Sonic games! Dive in, play around, and have fun! If you ever get stuck or have any questions, from level creation to modding in general, feel free to join the [Retro Engine Modding Server](https://dc.railgun.works/retroengine)!
+And that’s it, you're all ready to start making custom levels now! Dive in, play around, and have fun! If you ever get stuck or have any questions, from level creation to modding in general, feel free to join the [Retro Engine Modding Server](https://dc.railgun.works/retroengine)!
 
 <!-- For further information, feel free to look around the rest of the [SonLVL-RSDK wiki](https://lavesiime.github.io/guides/sonlvl/wiki/)!-->
 
