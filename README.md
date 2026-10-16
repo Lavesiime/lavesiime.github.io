@@ -1,5 +1,5 @@
 # lavesiime.github.io
-my little playground for stuff don't expect to see anything actually useful in here
+my little playground for stuff don't expect to see anything actually usefull in here
 
 ## random pages
 * [SonLVL-RSDK Setup Guide](guides/sonlvl/install)
